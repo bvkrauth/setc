@@ -114,12 +114,10 @@ get_setc_data <- function(term,
     dplyr::mutate(course_number = get_course_number(course_id = course_id))
   # Export the data to CSV files
   if (!is.null(output_folder)) {
-    question_and_course %>%
-      readr::write_excel_csv(stringr::str_c(output_folder, term, "_question_and_course.csv"))
     course %>%
       readr::write_excel_csv(stringr::str_c(output_folder, term, "_course.csv"))
     comments %>%
       readr::write_excel_csv(stringr::str_c(output_folder, term, "_comments.csv"))
   }
-  invisible(list(question, course, question_and_course, comments))
+  invisible(list(course, comments))
 }
