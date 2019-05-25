@@ -3,6 +3,7 @@
 #' @param term A string, either "Sp", "Su", or "Fa"
 #' @param term_folder The folder containing SETC reports
 #' @param output_folder The folder in which you want output to be written
+#' @param instructor_file filename
 #' @param question_file Optional question file
 #'
 #' @return
@@ -12,10 +13,13 @@
 get_setc_data <- function(term,
                               term_folder = NULL,
                               output_folder = NULL,
-                              question_file = NULL) {
+                              question_file = NULL,
+                              instructor_file = NULL) {
   # Indicate where course-level SETC reports are
   report_file <- dir(path = term_folder, pattern = "*.pdf", full.names = TRUE)
   report_name <- basename(report_file)
+  # Read from master instructor list
+  instructor <- get_instructors(instructor_file = instructor_file)
   # Read from master question list
   question <- get_questions(question_file = question_file)
   number_of_questions <- nrow(question)
@@ -102,6 +106,7 @@ get_setc_data <- function(term,
     dplyr::mutate(term_id = get_term_id(course_id = course_id)) %>%
     dplyr::left_join(dplyr::select(question, question_id, score_legend), by = "question_id")
   course <- course %>%
+    dplyr::left_join(instructor, by = "instructor_id") %>%
     dplyr::left_join(setc_spread(question_and_course, "mean"), by = "course_id") %>%
     dplyr::left_join(setc_spread(question_and_course, "n"), by = "course_id") %>%
     dplyr::left_join(setc_spread(question_and_course, "legend"), by = "course_id") %>%

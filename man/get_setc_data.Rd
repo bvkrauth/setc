@@ -5,7 +5,7 @@
 \title{Title}
 \usage{
 get_setc_data(term, term_folder = NULL, output_folder = NULL,
-  question_file = NULL)
+  question_file = NULL, instructor_file = NULL)
 }
 \arguments{
 \item{term}{A string, either "Sp", "Su", or "Fa"}
@@ -15,6 +15,8 @@ get_setc_data(term, term_folder = NULL, output_folder = NULL,
 \item{output_folder}{The folder in which you want output to be written}
 
 \item{question_file}{Optional question file}
+
+\item{instructor_file}{filename}
 }
 \description{
 Title
