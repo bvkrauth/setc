@@ -98,6 +98,20 @@ get_setc_data <- function(term,
   question_and_course$score_sd <- setc_sd(question_and_course)
   # score_median is median of scores
   question_and_course$score_median <- setc_median(question_and_course)
+  question_and_course <- question_and_course %>%
+    dplyr::mutate(term_id = get_term_id(course_id = course_id)) %>%
+    dplyr::left_join(dplyr::select(question, question_id, score_legend), by = "question_id")
+  course <- course %>%
+    dplyr::left_join(setc_spread(question_and_course, "mean"), by = "course_id") %>%
+    dplyr::left_join(setc_spread(question_and_course, "n"), by = "course_id") %>%
+    dplyr::left_join(setc_spread(question_and_course, "legend"), by = "course_id") %>%
+    dplyr::mutate(course_section = stringr::str_sub(course_id, 8, 9)) %>%
+    dplyr::mutate(season = stringr::str_sub(course_id, 10, 11)) %>%
+    dplyr::mutate(year = 2000 + as.numeric(stringr::str_sub(course_id, 12, 13))) %>%
+    dplyr::mutate(academic_year = year - as.numeric(season != "Fa"))
+  comments <- comments %>%
+    dplyr::left_join(dplyr::select(course, course_id, instructor_id, term_id, course_number), by = "course_id") %>%
+    dplyr::mutate(course_number = get_course_number(course_id = course_id))
   # Export the data to CSV files
   if (!is.null(output_folder)) {
     question_and_course %>%
