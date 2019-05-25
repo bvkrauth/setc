@@ -18,5 +18,5 @@ string
 Extract course_id from SETC report filename
 }
 \examples{
-get_course_id("BrianKrauth -ECON105D100-Fall2018(SUP)_407d2700-5049-48d3-9ed5-465e7627b5d0en-US.pdf", term="Fa18")
+get_course_id("BrianKrauth -ECON105D100-Fall2018.pdf", term="Fa18")
 }

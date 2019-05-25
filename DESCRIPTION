@@ -17,4 +17,8 @@ Suggests:
 Imports: 
     stringr,
     magrittr,
-    pdftools
+    pdftools,
+    tibble,
+    dplyr,
+    readr,
+    tidyr

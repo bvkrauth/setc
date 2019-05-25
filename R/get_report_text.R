@@ -14,6 +14,6 @@ get_report_text <- function(report_path) {
       pdftools::pdf_text() %>% # Read in PDF file as a single string
       stringr::str_split("\n") %>% # Convert to list of lines by splitting text at each newline character,
       unlist() %>% # Convert list of lines into vector of lines
-      stringr::str_replace_all("\r","") # Remove any left-over carriage returns
+      stringr::str_replace_all("\r", "") # Remove any left-over carriage returns
   invisible(report_text)
 }

@@ -10,7 +10,7 @@ test_that("Handles BUEC and W courses correctly", {
 })
 
 test_that("Clean failure", {
-  expect_error(get_course_id("BrianKrauth -ECON105D100-Fall2018(SUP)_407d2700-5049-48d3-9ed5-465e7627b5d0en-US.pdf"))
+#  expect_error(get_course_id("BrianKrauth -ECON105D100-Fall2018(SUP)_407d2700-5049-48d3-9ed5-465e7627b5d0en-US.pdf"))
   expect_error(get_course_id("A", term = "Fa18"))
 })
 
@@ -22,4 +22,9 @@ test_that("Basic functionality (Fa 16 term)", {
 test_that("Handles BUEC and W courses correctly (Fa16 term)", {
   expect_equal(get_course_id("Bertille Antoine (BUEC 333 (D100) - Statistical Analysis of Economic Data)_Fall_2016_ab5297f1-1bc0-452b-b1d4-dfcb09859fa9en-US.pdf", term = "Fa16"), "ECON333D1Fa16")
   expect_equal(get_course_id("Alexander Karaivanov (ECON 355W (D100) - Economic Development)_Fall_2016_4cc3a439-fc22-473a-b90b-4a6d3ed0b22fen-US.pdf", term = "Fa16"), "ECON355D1Fa16")
+})
+
+test_that("Finds the term", {
+  expect_equal(get_course_id("Bertille Antoine (BUEC 333 (D100) - Statistical Analysis of Economic Data)_Fall_2016_ab5297f1-1bc0-452b-b1d4-dfcb09859fa9en-US.pdf"), "ECON333D1Fa16")
+  expect_equal(get_course_id("BrianKrauth -ECON105D100-Fall2018(SUP)_407d2700-5049-48d3-9ed5-465e7627b5d0en-US.pdf"), "ECON105D1Fa18")
 })

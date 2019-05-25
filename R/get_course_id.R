@@ -8,10 +8,10 @@
 #' @export
 #'
 #' @examples
-#' get_course_id("BrianKrauth -ECON105D100-Fall2018(SUP)_407d2700-5049-48d3-9ed5-465e7627b5d0en-US.pdf", term="Fa18")
+#' get_course_id("BrianKrauth -ECON105D100-Fall2018.pdf", term="Fa18")
 get_course_id <- function(report_name, term=NULL){
   if (is.null(term)) {
-    stop("term is required")
+    term <- get_term(report_name, from = "report_name")
   }
   # The document name format was slightly different in Fall 2016
   if (term == "Fa16") {
@@ -32,9 +32,8 @@ get_course_id <- function(report_name, term=NULL){
                        term)
   }
   if (!is_course_id(course_id)) {
-    stop("invalid course id: ", course_id)
+    stop("Unable to recover valid course id from report name: ", report_name)
   }
-  # TODO: Check to make sure it's a valid COURSE_ID and fail elegantly
   # Return the course ID
   course_id
 }

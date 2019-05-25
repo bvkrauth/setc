@@ -1,0 +1,44 @@
+#' Extract mean score from SETC report text
+#'
+#' @param report_text string
+#' @param question tibble
+#'
+#' @return
+#' @export
+#'
+#' @examples
+get_score_mean <- function(report_text, question){
+  # Find all lines in which the question appears in the text
+  question_appearance <- report_text %>%
+    stringr::str_which(question$question_text[1])
+  # Get the text starting with the first appearance of the question
+  tmptext <- report_text[question_appearance[1]:length(report_text)]
+  # If TABLE_TYPE = "separate" the table looks like this:
+  # [question text]
+  # Mean
+  # [number]
+  if (question$table_type[1] == "separate") {
+    # Find the next appearance of the word "Mean", and get the next number after that
+    score_mean <- tmptext %>%
+      dplyr::nth(dplyr::first(stringr::str_which(tmptext, "Mean")) + 1) %>% # Get row after next appearance of "Mean"
+      stringr::str_split("\\s+") %>% # Split up on white space
+      unlist() %>% # Convert to vector
+      dplyr::nth(2) %>% # Take the second element
+      as.numeric() # Convert from string to number
+  }
+  # If TABLE_TYPE = "grouped" the table looks like this:
+  #                                               Mean
+  # [question text]                              [number]
+  # [question text]                              [number]
+  # [question text]                              [number]
+  if (question$table_type[1] == "grouped") {
+    tmp <- tmptext[1:3] %>% # get the next few lines
+      stringr::str_split("\\s+") %>% # Split up on white space
+      unlist() %>% # Convert to vector
+      stringr::str_extract("\\d+") %>% # Get rid of everything but digits
+      as.numeric() # Convert from string to number
+    # Now take the first number (i.e., non-NA) in TMP
+    score_mean <- dplyr::first(tmp[!is.na(tmp)])
+  }
+  score_mean
+}
