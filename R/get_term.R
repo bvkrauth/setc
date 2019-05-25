@@ -31,7 +31,7 @@ get_term <- function(input, from="report_name"){
     }
   }
   if (from == "term_folder") {
-    term <- stringr::str_c(stringr::str_sub(input,8,9),stringr::str_sub(input,-2))
+    term <- stringr::str_c(stringr::str_sub(input, 8, 9), stringr::str_sub(input, -2))
   }
   term
 }

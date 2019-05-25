@@ -89,7 +89,7 @@ get_setc_data <- function(term,
       # We won't use these as we have this information elsewhere
     }
     # Print out some information about what we've found
-    cat(course$course_id[i], course$course_number[i], course$instructor_id[i],course$invited[i],course$responded[i], "\n")
+    cat(course$course_id[i], course$course_number[i], course$instructor_id[i], course$invited[i], course$responded[i], "\n")
   }
   # Extract summary statistics from the detailed distribution
   # score_n is total number of observations
