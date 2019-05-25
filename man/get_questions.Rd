@@ -4,7 +4,7 @@
 \alias{get_questions}
 \title{Title}
 \usage{
-get_questions(question_file, output_file = NULL)
+get_questions(question_file = NULL, output_file = NULL)
 }
 \arguments{
 \item{question_file}{a file name}
