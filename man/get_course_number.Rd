@@ -2,18 +2,31 @@
 % Please edit documentation in R/get_course_number.R
 \name{get_course_number}
 \alias{get_course_number}
-\title{Get course number}
+\title{Get course number from a SETC report name or course ID}
 \usage{
 get_course_number(report_name = NULL, term = NULL,
   course_id = get_course_id(report_name, term = term))
 }
 \arguments{
-\item{report_name}{string}
+\item{report_name}{An optional string (vector) giving the
+file name of a SETC report}
 
-\item{term}{string}
+\item{term}{An optional string giving the term, e.g. "Fa16"}
 
-\item{course_id}{string}
+\item{course_id}{An optional vector of course IDs}
+}
+\value{
+A vector of course numbers extracted from the input.
 }
 \description{
-Get course number
+\code{get_course_number} extracts the course number from
+a SETC report name or course ID.
+}
+\details{
+If both \code{report_name} and \code{course_id} are provided,
+\code{course_id} takes precedence.
+}
+\examples{
+get_course_number(course_id = "ECON105D1Fa17")
+get_course_number(report_name = "BrianKrauth -ECON105D100-Fall2018.pdf")
 }

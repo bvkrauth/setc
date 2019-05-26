@@ -2,10 +2,10 @@ context("Normal")
 
 test_that("Basic functionality", {
   expect_equal(get_instructor_id("BrianKrauth -ECON105D100-Fall2018(SUP)_407d2700-5049-48d3-9ed5-465e7627b5d0en-US.pdf", term = "Fa18"), "BrianKrauth")
+  expect_equal(get_instructor_id("BrianKrauth -ECON105D100-Fall2018(SUP)_407d2700-5049-48d3-9ed5-465e7627b5d0en-US.pdf"), "BrianKrauth")
 })
 
 test_that("Clean failure", {
-  expect_error(get_instructor_id("BrianKrauth -ECON105D100-Fall2018(SUP)_407d2700-5049-48d3-9ed5-465e7627b5d0en-US.pdf"))
   expect_error(get_instructor_id("", term = "Fa18"))
 })
 
