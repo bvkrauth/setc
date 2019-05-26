@@ -2,15 +2,55 @@
 % Please edit documentation in R/get_questions.R
 \name{get_questions}
 \alias{get_questions}
-\title{Title}
+\title{Read in additional question information as a tibble}
 \usage{
-get_questions(question_file = NULL, output_file = NULL)
+get_questions(question_file = NULL)
 }
 \arguments{
-\item{question_file}{a file name}
-
-\item{output_file}{a file name}
+\item{question_file}{Optional string, the name of the file containing
+additional question information.  If not provided, a default
+list of questions will be provided.}
+}
+\value{
+A tibble (data frame) in which each row corresponds to
+ a SETC multiple-choice question. Questions are identified by
+ the variable \code{question_id}.
 }
 \description{
-Title
+\code{get_questions} assembles a tibble containing information on
+SETC multiple choice questions for use by \code{\link{get_setc_data}}.
+}
+\details{
+If called with no arguments, \code{get_questions} will assemble
+a default list of questions that includes basic information on
+all SFU and FASS-level SETC multiple choice questions used
+through the Spring 2019 term.
+
+The \code{question_file} option can be used to include additional
+department-level or faculty-level (if not FASS) questions,
+or additional information on questions.  The file should
+be a CSV file in which the first row gives variable names
+and each additional row corresponds to a question.  Questions
+are to be identified by the variable \code{question_id};
+additional required variables are:
+
+\code{question_text} The text of the question as written in SETC.
+This will be used to find the question in the SETC document.
+
+\code{table_type} Either "grouped" or "separate" depending on how
+answers to this question are reported.  "grouped" means they
+are reported in a table with other questions, "separate"
+means they are reported separately.
+
+\code{label_1}, \code{label_2},...\code{label_5} The labels
+associated with each level of the answer, e.g. "Strongly disagree"
+}
+\examples{
+get_questions()
+\dontrun{
+get_questions("..\\data\\master\\master question list.csv")
+}
+}
+\seealso{
+\code{\link{get_instructors}}, \code{\link{get_setc_data}}.
 }

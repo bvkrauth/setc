@@ -1,22 +1,55 @@
-#' Title
+#' Read in additional question information as a tibble
 #'
-#' @param question_file a file name
-#' @param output_file a file name
+#' \code{get_questions} assembles a tibble containing information on
+#' SETC multiple choice questions for use by \code{\link{get_setc_data}}.
 #'
-#' @return
+#' If called with no arguments, \code{get_questions} will assemble
+#' a default list of questions that includes basic information on
+#' all SFU and FASS-level SETC multiple choice questions used
+#' through the Spring 2019 term.
+#'
+#' The \code{question_file} option can be used to include additional
+#' department-level or faculty-level (if not FASS) questions,
+#' or additional information on questions.  The file should
+#' be a CSV file in which the first row gives variable names
+#' and each additional row corresponds to a question.  Questions
+#' are to be identified by the variable \code{question_id};
+#' additional required variables are:
+#'
+#' \code{question_text} The text of the question as written in SETC.
+#' This will be used to find the question in the SETC document.
+#'
+#' \code{table_type} Either "grouped" or "separate" depending on how
+#' answers to this question are reported.  "grouped" means they
+#' are reported in a table with other questions, "separate"
+#' means they are reported separately.
+#'
+#' \code{label_1}, \code{label_2},...\code{label_5} The labels
+#' associated with each level of the answer, e.g. "Strongly disagree"
+#'
+#' @param question_file Optional string, the name of the file containing
+#'   additional question information.  If not provided, a default
+#'   list of questions will be provided.
+#'
+#' @return A tibble (data frame) in which each row corresponds to
+#'  a SETC multiple-choice question. Questions are identified by
+#'  the variable \code{question_id}.
+#'
 #' @export
 #'
+#' @seealso \code{\link{get_instructors}}, \code{\link{get_setc_data}}.
+#'
 #' @examples
-get_questions <- function(question_file=NULL, output_file = NULL){
+#' get_questions()
+#' \dontrun{
+#' get_questions("..\data\master\master question list.csv")
+#' }
+get_questions <- function(question_file=NULL){
   if (is.null(question_file)) {
     question <- get_default_questions()
   } else {
     question <- readr::read_csv(question_file)
     question$score_legend <- stringr::str_c(question$label_1, question$label_2, question$label_3, question$label_4, question$label_5, sep = " | ")
-  }
-  if (!is.null(output_file)){
-    question %>%
-      readr::write_excel_csv(output_file)
   }
   question
 }

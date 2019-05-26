@@ -2,15 +2,36 @@
 % Please edit documentation in R/get_instructors.R
 \name{get_instructors}
 \alias{get_instructors}
-\title{Read in the master instructor list as a tibble}
+\title{Read in additional instructor information as a tibble}
 \usage{
-get_instructors(instructor_file, output_file = NULL)
+get_instructors(instructor_file = NULL)
 }
 \arguments{
-\item{instructor_file}{filename}
+\item{instructor_file}{An optional string giving the location of the
+CSV file with additional instructor information.}
+}
+\value{
+If instructor_file is provided, a tibble (data frame)
+containing instructor information.
 
-\item{output_file}{filename}
+If \code{instructor_file}
+is not provided, \code{get_instructors} returns NULL.
 }
 \description{
-Read in the master instructor list as a tibble
+\code{get_instructors} reads additional instructor information
+from \code{instructor_file}, if it is provided.
+}
+\details{
+If provided, \code{instructor_file} should be a CSV file in which the top
+row gives variable names, and each additional row corresponds
+to an instructor. Variables should include \code{instructor_id}
+so that this data can be linked to other SETC data. To avoid name
+conflicts, it is advisable for all variables to have the prefix
+\code{instructor_}.
+}
+\examples{
+get_instructors()
+\dontrun{
+get_instructors("..\\data\\master\\master intructor list.csv")
+}
 }

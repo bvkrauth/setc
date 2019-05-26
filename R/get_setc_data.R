@@ -1,17 +1,72 @@
-#' Title
+#' Extract SETC data from a collection of SETC reports.
 #'
-#' @param term A string, either "Sp", "Su", or "Fa"
-#' @param term_folder The folder containing SETC reports
-#' @param output_folder The folder in which you want output to be written
-#' @param instructor_file filename
-#' @param question_file Optional question file
+#' \code{get_setc_data} extracts course-level SETC results and
+#' comments from a set of PDF files containing SETC reports.
 #'
-#' @return
+#' SETC reports are PDF files that give various information
+#' about student responses to various questions, as well as
+#' more open-ended comments. The files are named according
+#' to a naming convention that allows us to determine which
+#' course they are associated with, and have a pretetermined
+#' format that allows us to extract the data from the PDF
+#' files.  Both the file naming convention and the file
+#' format can vary somewhat across terms, so the \code{term}
+#' argument is mandatory and all of the files in
+#' \code{term_folder} must be from that term.  Use
+#' \code{\link{pool_setc_data}} to pool across multiple terms.
+#'
+#' The output has two components.  The course-level data set
+#' (\code{course}) includes student responses to the
+#' multiple choice questions. The multiple choice questions
+#' to be included can be provided by the user in \code{question_file}.
+#' If a user-supplied question file is not provided, a default
+#' question file based on SFU and FASS-level will be used.
+#' Basic instructor information is extracted from the file,
+#' but you can also merge in additional instructor information
+#' in \code{instructor_file}.
+#'
+#' The second data set \code{comments} provides a list of student
+#' comments, along with basic information on the course each
+#' comment is from.
+#'
+#' @param term A 4-character string indicating the term, e.g. "Sp17"
+
+#' @param term_folder A string giving the folder containing SETC reports
+
+#' @param output_folder Optional string, the folder in which you want output to be written.
+#'   If not provided, no output will be written
+
+#' @param instructor_file Optional string, the location of a file providing
+#'   additional instructor information to be passed on to \code{\link{get_instructors}}.
+
+#' @param question_file Optional string, the location of a file containing
+#'   additional question information to be passed on to \code{\link{get_questions}}
+#'
+#' @return A list with two components:
+#'
+#'   \code{course}, a tibble (data frame) in which each row is a course
+#'   identified by the variable \code{course_id}. Other variables include
+#'   course information, instructor information
+#'   (including \code{instructor_id}), and student responses to SETC
+#'   multiple choice questions.
+#'
+#'   \code{comments}, a tibble (data frame) in which each row is
+#'   a student comment.  In addition to the comment text, additional
+#'   variables provide basic information on the course
+#'   (including \code{course_id}) and instructor
+#'   (including \code{instructor_id})
+#'
 #' @export
 #'
+#' @seealso \code{\link{get_instructors}}, \code{\link{get_questions}},
+#'   \code{\link{pool_setc_data}}.
+#'
 #' @examples
+#' \dontrun{
+#' get_setc_data("Sp17", "../SETC reports/1171 - Spring 2017")
+#' }
 get_setc_data <- function(term,
-                              term_folder = NULL,
+                              term_folder,
                               output_folder = NULL,
                               question_file = NULL,
                               instructor_file = NULL) {
