@@ -49,8 +49,11 @@ get_questions <- function(question_file=NULL){
     question <- get_default_questions()
   } else {
     question <- readr::read_csv(question_file)
-    question$score_legend <- stringr::str_c(question$label_1, question$label_2, question$label_3, question$label_4, question$label_5, sep = " | ")
   }
+  if (!is_question_data(question)){
+    stop("Invalid question data in ",question_file)
+  }
+  question$score_legend <- stringr::str_c(question$label_1, question$label_2, question$label_3, question$label_4, question$label_5, sep = " | ")
   question
 }
 
