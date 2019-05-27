@@ -22,3 +22,5 @@ Imports:
     dplyr,
     readr,
     tidyr
+URL: https://github.com/bvkrauth/setc
+BugReports: https://github.com/bvkrauth/setc/issues
