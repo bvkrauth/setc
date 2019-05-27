@@ -18,9 +18,11 @@ get_score_mean <- function(report_text, question){
   # Mean
   # [number]
   if (question$table_type[1] == "separate") {
-    # Find the next appearance of the word "Mean", and get the next number after that
+    # Find the next appearance of the word "Mean"
+    # Then get the next number after that
     score_mean <- tmptext %>%
-      dplyr::nth(dplyr::first(stringr::str_which(tmptext, "Mean")) + 1) %>% # Get row after next appearance of "Mean"
+      dplyr::nth(dplyr::first(stringr::str_which(tmptext,
+                                                 "Mean")) + 1) %>%
       stringr::str_split("\\s+") %>% # Split up on white space
       unlist() %>% # Convert to vector
       dplyr::nth(2) %>% # Take the second element

@@ -14,8 +14,11 @@ test_that("vectorized", {
   expect_equal(get_term_id(c("Fa22", "Sp23", "Su23")), c(1227, 1231, 1234))
 })
 
+test_that("Should fail cleanly here", {
+  #  expect_error(get_term_id())
+})
+
 test_that("Fails cleanly", {
-#  expect_error(get_term_id())
   expect_error(get_term_id(""))
   expect_error(get_term_id(5))
   expect_error(get_term_id("NONSENSE"))

@@ -9,7 +9,8 @@
 #' @examples
 #' get_term_id(term="Fa17")
 #' get_term_id(course_id = "ECON381D1Fa17")
-get_term_id <- function(term = stringr::str_sub(course_id, -4), course_id = NULL){
+get_term_id <- function(term = stringr::str_sub(course_id, -4),
+                        course_id = NULL){
   is_term <- term %>%
     stringr::str_detect("^(Fa|Sp|Su)[0-9]{2}$")
   if (!all(is_term)) {

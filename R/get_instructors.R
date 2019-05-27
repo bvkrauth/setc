@@ -26,16 +26,16 @@
 #' \dontrun{
 #' get_instructors("..\data\master\master intructor list.csv")
 #' }
-get_instructors <- function(instructor_file=NULL){
+get_instructors <- function(instructor_file = NULL){
   if (is.null(instructor_file)){
-    instructor <- tibble::tibble(instructor_id=character(0))
+    instructor <- tibble::tibble(instructor_id = character(0))
   } else {
     if (!file.exists(instructor_file)){
-      stop("File does not exist: ",instructor_file)
+      stop("File does not exist: ", instructor_file)
     }
     instructor <- readr::read_csv(instructor_file)
     if (!is_instructor_data(instructor)){
-      stop("Invalid instructor data in ",instructor_file)
+      stop("Invalid instructor data in ", instructor_file)
     }
   }
   instructor

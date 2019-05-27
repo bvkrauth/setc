@@ -25,7 +25,8 @@
 #' @examples
 get_comments <- function(report_text, course_id = ""){
   comments <- NULL
-  comment_appearance <- stringr::str_which(report_text, "Do you have any further comments?")
+  comment_appearance <- stringr::str_which(report_text,
+                                           "Do you have any further comments?")
   if (length(comment_appearance) > 0) {
     comment_start <- comment_appearance[1] + 2
     if (comment_start <= length(report_text)) {
@@ -34,7 +35,9 @@ get_comments <- function(report_text, course_id = ""){
       tmptext <- stringr::str_replace(tmptext, "^\\s+", "")
       tmptext <- tmptext[tmptext != "Comments"]
       if (length(tmptext) > 0) {
-        comments <- tibble::tibble(course_id = course_id, comment_number = seq_along(tmptext), comment_text = tmptext)
+        comments <- tibble::tibble(course_id = course_id,
+                                   comment_number = seq_along(tmptext),
+                                   comment_text = tmptext)
       }
     }
   }

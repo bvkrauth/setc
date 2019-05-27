@@ -15,9 +15,9 @@
 is_question_data <- function(dat){
   ans <- FALSE
   if (is.data.frame(dat)) {
-    if (any(stringr::str_detect(names(dat),"^question_id$")) &
-        any(stringr::str_detect(names(dat),"^question_text$")) &
-        any(stringr::str_detect(names(dat),"^table_type$")) ){
+    if (any(stringr::str_detect(names(dat), "^question_id$")) &
+        any(stringr::str_detect(names(dat), "^question_text$")) &
+        any(stringr::str_detect(names(dat), "^table_type$"))){
       ans <- (anyDuplicated(dat$question_id) == 0)
     }
   }

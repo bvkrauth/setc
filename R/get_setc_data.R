@@ -78,7 +78,7 @@ get_setc_data <- function(term,
   # Read from master question list
   question <- get_questions(question_file = question_file)
   number_of_questions <- nrow(question)
-  ## CREATE COURSE-LEVEL TIBBLE
+  # Create course-level tibble
   # Each course has a PDF file in report_name, so that is how we build the list
   course <- tibble::tibble(course_id     = get_course_id(report_name, term = term),
                     instructor_id = get_instructor_id(report_name, term = term),
@@ -88,7 +88,7 @@ get_setc_data <- function(term,
                     invited       = NA,
                     responded     = NA)
   number_of_courses <- nrow(course)
-  ###### CREATE COURSE-AND-QUESTION-LEVEL TIBBLE
+  # Create course-and-question-level tibble
   # Make list of all course-and-question combinations
   question_and_course <- tibble::tibble( course_id     = rep(course$course_id, each = number_of_questions),
                                  question_id   = rep(question$question_id, times = number_of_courses),
@@ -125,12 +125,12 @@ get_setc_data <- function(term,
       question_appearance <- report_text %>%
         stringr::str_which(question$question_text[q])
       # Each question appears one to three times
-      # APPEARANCE #1: summary statistics (rounded mean if < 5 responses, mean/sd/n otherwise)
+      # FIRST APPEARANCE: summary statistics (rounded mean if < 5 responses, mean/sd/n otherwise)
       # We will only need these if the full distribution is suppressed (< 5 responses)
       if (is.na(course$responded[i])) {
         question_and_course$score_mean[iq] <- get_score_mean(report_text, question = question[q, ])
       }
-      # APPEARANCE #2: the full distribution of scores (only if >=5 responses)
+      # SECOND APPEARANCE: the full distribution of scores (only if >=5 responses)
       # We will get this distribution
       if (length(question_appearance) > 1) {
         score_distribution <- get_score_distribution(report_text, question[q, ])
@@ -140,7 +140,7 @@ get_setc_data <- function(term,
         question_and_course$score_4[iq] <- score_distribution[4]
         question_and_course$score_5[iq] <- score_distribution[5]
       }
-      # APPEARANCE #3 (for some questions): comparison scores from dept/faculty/SFU
+      # THIRD APPEARANCE (for some questions): comparison scores from dept/faculty/SFU
       # We won't use these as we have this information elsewhere
     }
     # Print out some information about what we've found

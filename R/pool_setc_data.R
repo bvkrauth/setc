@@ -30,7 +30,9 @@
 #' }
 pool_setc_data <- function(data_structure, data_folder){
   file_names <- dir(data_folder,
-                    pattern = stringr::str_c("(Fa|Sp|Su)[0-9]{2}_", data_structure, ".csv"),
+                    pattern = stringr::str_c("(Fa|Sp|Su)[0-9]{2}_",
+                                             data_structure,
+                                             ".csv"),
                     full.names = TRUE)
   dat <- NULL
   if (length(file_names) > 0){

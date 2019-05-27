@@ -15,7 +15,7 @@
 is_instructor_data <- function(dat){
   ans <- FALSE
   if (is.data.frame(dat)) {
-    if (any(stringr::str_detect(names(dat),"^instructor_id$"))){
+    if (any(stringr::str_detect(names(dat), "^instructor_id$"))){
       ans <- (anyDuplicated(dat$instructor_id) == 0)
    }
   }
