@@ -15,7 +15,7 @@ get_term_folder_name <- function(term){
   }
   season <- stringr::str_sub(term, 1, 2)
   yr <- stringr::str_sub(term, 3, 4)
-  season_long <- switch(season, Fa = "Fall", Sp = "Spring", Su = "Summer")
-  season_code <- switch(season, Fa = "7", Sp = "1", Su = "4")
+  season_long <- stringr::str_replace_all(season, c("Fa" = "Fall", "Sp" = "Spring", "Su" = "Summer"))
+  season_code <- stringr::str_replace_all(season, c("Fa" = "7", "Sp" = "1", "Su" = "4"))
   stringr::str_c("1", yr, season_code, " - ", season_long, " ", "20", yr)
 }
