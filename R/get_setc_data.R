@@ -9,38 +9,44 @@
 #' to a naming convention that allows us to determine which
 #' course they are associated with, and have a pretetermined
 #' format that allows us to extract the data from the PDF
-#' files.  Both the file naming convention and the file
-#' format can vary somewhat across terms, so the \code{term}
-#' argument is mandatory and all of the files in
-#' \code{term_folder} must be from that term.  Use
-#' \code{\link{pool_setc_data}} to pool across multiple terms.
+#' files. Use \code{\link{pool_setc_data}} to pool across
+#' multiple terms.
 #'
-#' The output has two components.  The course-level data set
-#' (\code{course}) includes student responses to the
-#' multiple choice questions. The multiple choice questions
-#' to be included can be provided by the user in \code{question_file}.
+#' The output is a list with two components:
+#'
+#' The course-level data set (\code{course}) includes student
+#' responses to the multiple choice questions. The multiple choice
+#' questions to be included can be provided by the user in
+#' \code{question_file}.
 #' If a user-supplied question file is not provided, a default
 #' question file based on SFU and FASS-level will be used.
-#' Basic instructor information is extracted from the file,
-#' but you can also merge in additional instructor information
-#' in \code{instructor_file}.
+#' Basic instructor information is extracted from the SETC
+#' report file, but you can also merge in additional instructor
+#' information in \code{instructor_file}.
 #'
 #' The second data set \code{comments} provides a list of student
 #' comments, along with basic information on the course each
 #' comment is from.
 #'
-#' @param term A 4-character string indicating the term, e.g. "Sp17"
-
-#' @param term_folder A string giving the folder containing SETC reports
-
-#' @param output_folder Optional string, the folder in which you want output to be written.
-#'   If not provided, no output will be written
-
+#' @param report_folder A string identifying the folder containing SETC report files.
+#'
+#' @param report_file A vector of strings listing the SETC report files.
+#'
 #' @param instructor_file Optional string, the location of a file providing
 #'   additional instructor information to be passed on to \code{\link{get_instructors}}.
-
+#'
 #' @param question_file Optional string, the location of a file containing
 #'   additional question information to be passed on to \code{\link{get_questions}}
+#'
+#' @param course_id Optional vector of strings, same length as report_file. Normally
+#'   the course_id can be recovered from the SETC file name, but this option allows
+#'   the user to specify it directly (for example, in the case where the file names
+#'   have been altered)
+#'
+#' @param instructor_id Optional vector of strings, same length as report_file. Normally
+#'   the instructor_id can be recovered from the SETC file name, but this option allows
+#'   the user to specify it directly (for example, in the case where the file names
+#'   have been altered)
 #'
 #' @return A list with two components:
 #'
@@ -65,14 +71,27 @@
 #' \dontrun{
 #' get_setc_data("Sp17", "../SETC reports/1171 - Spring 2017")
 #' }
-get_setc_data <- function(term,
-                              term_folder,
-                              output_folder = NULL,
-                              question_file = NULL,
-                              instructor_file = NULL) {
+get_setc_data <- function(report_folder = NULL,
+                          report_file = NULL,
+                          question_file = NULL,
+                          instructor_file = NULL,
+                          course_id = NULL,
+                          instructor_id = NULL) {
+  # Possible error cases:
+  # Neither report_folder nor report_file provided
+  # report_folder is empty or has no PDF files
+  # Non-PDF files in report_file
   # Indicate where course-level SETC reports are
-  report_file <- dir(path = term_folder, pattern = "*.pdf", full.names = TRUE)
+  if (is.null(report_file)){
+    report_file <- dir(path = report_folder, pattern = "*.pdf", full.names = TRUE)
+  }
   report_name <- basename(report_file)
+  if (is.null(course_id)){
+    course_id <- get_course_id(report_name)
+  }
+  if (is.null(instructor_id)){
+    instructor_id <- get_instructor_id(report_name)
+  }
   # Read from master instructor list
   instructor <- get_instructors(instructor_file = instructor_file)
   # Read from master question list
@@ -80,38 +99,43 @@ get_setc_data <- function(term,
   number_of_questions <- nrow(question)
   # Create course-level tibble
   # Each course has a PDF file in report_name, so that is how we build the list
-  course <- tibble::tibble(course_id     = get_course_id(report_name, term = term),
-                    instructor_id = get_instructor_id(report_name, term = term),
-                    term_id       = get_term_id(term),
-                    course_number = get_course_number(report_name, term = term),
-                    report_name   = report_name,
-                    invited       = NA,
-                    responded     = NA)
+  course <- tibble::tibble(course_id     = course_id,
+                           instructor_id = instructor_id,
+                           term_id       = get_term_id(course_id = course_id),
+                           course_number = get_course_number(course_id = course_id),
+                           report_name   = report_name,
+                           invited       = NA,
+                           responded     = NA)
   number_of_courses <- nrow(course)
   # Create course-and-question-level tibble
   # Make list of all course-and-question combinations
-  question_and_course <- tibble::tibble( course_id     = rep(course$course_id, each = number_of_questions),
-                                 question_id   = rep(question$question_id, times = number_of_courses),
-                                 question_text = rep(question$question_text, times = number_of_courses),
-                                 score_mean    = NA,
-                                 score_sd      = NA,
-                                 score_median  = NA,
-                                 score_n       = NA,
-                                 score_1       = NA,
-                                 score_2       = NA,
-                                 score_3       = NA,
-                                 score_4       = NA,
-                                 score_5       = NA)
-  comments <- tibble::tibble(course_id = character(0),
-                      comment_row = integer(0),
-                      comment_text = character(0))
-  # Loop over all of the courses (files)
+  question_and_course <- tibble::tibble( course_id     = rep(course$course_id,
+                                                             each = number_of_questions),
+                                         question_id   = rep(question$question_id,
+                                                             times = number_of_courses),
+                                         question_text = rep(question$question_text,
+                                                             times = number_of_courses),
+                                         score_mean    = NA,
+                                         score_sd      = NA,
+                                         score_median  = NA,
+                                         score_n       = NA,
+                                         score_1       = NA,
+                                         score_2       = NA,
+                                         score_3       = NA,
+                                         score_4       = NA,
+                                         score_5       = NA)
+  # Create empty tibble for comments
+  comments <- tibble::tibble(course_id    = character(0),
+                             comment_row  = integer(0),
+                             comment_text = character(0))
+  # Loop over all of the courses/files
   for (i in 1:number_of_courses) {
     # Get full text from PDF file
     report_text <- report_file[i] %>%
       get_report_text()
     #Get comments, if they exist
-    current_comments <- get_comments(report_text, course_id = course$course_id[i])
+    current_comments <- get_comments(report_text,
+                                     course_id = course$course_id[i])
     comments <- rbind(comments, current_comments)
     # Find response rate information in file, if it exists
     course$responded[i] <- report_text %>%
@@ -168,16 +192,11 @@ get_setc_data <- function(term,
     dplyr::mutate(course_section = stringr::str_sub(course_id, 8, 9)) %>%
     dplyr::mutate(season = stringr::str_sub(course_id, 10, 11)) %>%
     dplyr::mutate(year = 2000 + as.numeric(stringr::str_sub(course_id, 12, 13))) %>%
-    dplyr::mutate(academic_year = year - as.numeric(season != "Fa"))
+    dplyr::mutate(academic_year = year - as.numeric(season != "Fa")) %>%
+    dplyr::arrange(term_id, course_number)
   comments <- comments %>%
     dplyr::left_join(dplyr::select(course, course_id, instructor_id, term_id, course_number), by = "course_id") %>%
-    dplyr::mutate(course_number = get_course_number(course_id = course_id))
-  # Export the data to CSV files
-  if (!is.null(output_folder)) {
-    course %>%
-      readr::write_excel_csv(stringr::str_c(output_folder, term, "_course.csv"))
-    comments %>%
-      readr::write_excel_csv(stringr::str_c(output_folder, term, "_comments.csv"))
-  }
-  invisible(list(course, comments))
+    dplyr::mutate(course_number = get_course_number(course_id = course_id)) %>%
+    dplyr::arrange(term_id, course_id, comment_number)
+  invisible(list(course = course, comments = comments))
 }

@@ -4,22 +4,30 @@
 \alias{get_setc_data}
 \title{Extract SETC data from a collection of SETC reports.}
 \usage{
-get_setc_data(term, term_folder, output_folder = NULL,
-  question_file = NULL, instructor_file = NULL)
+get_setc_data(report_folder = NULL, report_file = NULL,
+  question_file = NULL, instructor_file = NULL, course_id = NULL,
+  instructor_id = NULL)
 }
 \arguments{
-\item{term}{A 4-character string indicating the term, e.g. "Sp17"}
+\item{report_folder}{A string identifying the folder containing SETC report files.}
 
-\item{term_folder}{A string giving the folder containing SETC reports}
-
-\item{output_folder}{Optional string, the folder in which you want output to be written.
-If not provided, no output will be written}
+\item{report_file}{A vector of strings listing the SETC report files.}
 
 \item{question_file}{Optional string, the location of a file containing
 additional question information to be passed on to \code{\link{get_questions}}}
 
 \item{instructor_file}{Optional string, the location of a file providing
 additional instructor information to be passed on to \code{\link{get_instructors}}.}
+
+\item{course_id}{Optional vector of strings, same length as report_file. Normally
+the course_id can be recovered from the SETC file name, but this option allows
+the user to specify it directly (for example, in the case where the file names
+have been altered)}
+
+\item{instructor_id}{Optional vector of strings, same length as report_file. Normally
+the instructor_id can be recovered from the SETC file name, but this option allows
+the user to specify it directly (for example, in the case where the file names
+have been altered)}
 }
 \value{
 A list with two components:
@@ -47,21 +55,20 @@ more open-ended comments. The files are named according
 to a naming convention that allows us to determine which
 course they are associated with, and have a pretetermined
 format that allows us to extract the data from the PDF
-files.  Both the file naming convention and the file
-format can vary somewhat across terms, so the \code{term}
-argument is mandatory and all of the files in
-\code{term_folder} must be from that term.  Use
-\code{\link{pool_setc_data}} to pool across multiple terms.
+files. Use \code{\link{pool_setc_data}} to pool across
+multiple terms.
 
-The output has two components.  The course-level data set
-(\code{course}) includes student responses to the
-multiple choice questions. The multiple choice questions
-to be included can be provided by the user in \code{question_file}.
+The output is a list with two components:
+
+The course-level data set (\code{course}) includes student
+responses to the multiple choice questions. The multiple choice
+questions to be included can be provided by the user in
+\code{question_file}.
 If a user-supplied question file is not provided, a default
 question file based on SFU and FASS-level will be used.
-Basic instructor information is extracted from the file,
-but you can also merge in additional instructor information
-in \code{instructor_file}.
+Basic instructor information is extracted from the SETC
+report file, but you can also merge in additional instructor
+information in \code{instructor_file}.
 
 The second data set \code{comments} provides a list of student
 comments, along with basic information on the course each
