@@ -4,6 +4,9 @@ test_that("Basic functionality", {
                c("Fa16", "Sp18"))
 })
 
+context("from = term_folder")
+
 test_that("from = term_folder", {
-  expect_equal(get_term("1187 - Fall 2018", from = "term_folder"), "Fa18")
+  expect_equal(get_term("1187 - Fall 2018", from = "term_folder"),
+               "Fa18")
 })

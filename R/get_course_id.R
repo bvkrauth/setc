@@ -39,27 +39,33 @@ get_course_id <- function(report_name, term=NULL){
     stringr::str_replace_all("BUEC", "ECON") %>%
     stringr::str_replace_all("WD", "D")
   # The course_id will look like (for example) ECON302D2Sp17
-  course_id <- stringr::str_c(stringr::str_sub(stringr::str_split(clean_report_name,
-                                                                  "-",
-                                                                  simplify = TRUE,
-                                                                  n = 3)[, 2], 1, 9),
-                              term)
+  course_id <- stringr::str_c(
+    stringr::str_sub(stringr::str_split(clean_report_name,
+                                        "-",
+                                        simplify = TRUE,
+                                        n = 3)[, 2], 1, -3),
+    term)
   # The document name format was slightly different in Fall 2016
   if (any(term == "Fa16")) {
     clean_report_name <- report_name %>%
-      stringr::str_replace_all(" \\(", "") %>%
       stringr::str_replace_all("BUEC", "ECON") %>%
-      stringr::str_replace_all("WD", "D")
+      stringr::str_replace_all("W \\(", " \\(")
     # The course_id will look like (for example) ECON305D1Fa16
-    fa16_course_id <- stringr::str_c("ECON",
-                                stringr::str_sub( stringr::str_split(clean_report_name,
-                                                                     "ECON ",
-                                                                     simplify = TRUE,
-                                                                     n = 2)[, 2], 1, 5),
-                                term)
+    course_code <- stringr::str_split(clean_report_name,
+                               "\\(",
+                               simplify = TRUE,
+                               n = 3)[, 2]
+    section_code <- stringr::str_sub(
+      stringr::str_split(clean_report_name,
+                         "\\(",
+                         simplify = TRUE,
+                         n = 3)[, 3],
+      1, 2)
+    fa16_course_id <- stringr::str_c(course_code, section_code, term) %>%
+        stringr::str_replace_all(" ", "")
     course_id[term == "Fa16"] <- fa16_course_id[term == "Fa16"]
   }
-  if (!is_course_id(course_id)) {
+  if (!all(is_course_id(course_id))) {
     stop("Unable to recover valid course id from report name: ", report_name)
   }
   # Return the course ID

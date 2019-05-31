@@ -1,11 +1,12 @@
 #' Get report text
 #'
-#' @param report_path string
+#' @param report_path A string giving the full path to
+#'   a PDF file containing a course-lvel SETC report
 #'
-#' @return
+#' @return A vector of strings, the text of the report.
+#'
 #' @export
 #'
-#' @examples
 get_report_text <- function(report_path) {
   if (!file.exists(report_path)){
     stop("File does not exist: ", report_path)

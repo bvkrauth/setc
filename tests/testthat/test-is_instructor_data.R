@@ -1,10 +1,13 @@
 test_that("Basic functionality", {
-  expect_equal(is_instructor_data(tibble::tibble(instructor_id = c("Bob", "Joe"))),
-               TRUE)
-  expect_equal(is_instructor_data(data.frame(instructor_id = c("Bob", "Joe"))),
-               TRUE)
-  expect_equal(is_instructor_data(data.frame(instructor_id = character(0))),
-               TRUE)
+  expect_equal(
+    is_instructor_data(tibble::tibble(instructor_id = c("Bob", "Joe"))),
+    TRUE)
+  expect_equal(
+    is_instructor_data(data.frame(instructor_id = c("Bob", "Joe"))),
+    TRUE)
+  expect_equal(
+    is_instructor_data(data.frame(instructor_id = character(0))),
+    TRUE)
 })
 
 test_that("FALSE if input isn't a data frame", {

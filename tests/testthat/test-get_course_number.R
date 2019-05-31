@@ -8,7 +8,8 @@ test_that("Basic functionality", {
 })
 
 test_that("Handle shorter program codes", {
-#    expect_equal(get_course_number(course_id = "IS105D1Fa18"), 105)
+  expect_equal(get_course_number(course_id = "BUS105D1Fa18"), 105)
+  expect_equal(get_course_number(course_id = "IS105D1Fa18"), 105)
 })
 
 

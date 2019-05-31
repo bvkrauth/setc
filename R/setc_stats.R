@@ -15,7 +15,6 @@
 #' statistic.
 #'
 #'
-#' @examples
 #' @name setc_stats
 NULL
 

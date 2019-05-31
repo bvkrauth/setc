@@ -7,16 +7,24 @@
 is_course_id(course_id, strict = FALSE)
 }
 \arguments{
-\item{course_id}{string}
+\item{course_id}{A vector of strings}
 
-\item{strict}{logical}
+\item{strict}{Optional logical scalar.  If \code{strict = TRUE},
+the function is case-sensitive and only allows known
+course section types (currently C,D,E and G).  If
+\code{strict = FALSE} (the default), the function is
+case sensitive and allows any course section type.}
 }
 \value{
-logical
+A logical vector equalling \code{TRUE} if the
+  corresponding element in \code{course_id} is a valid
+  course ID, and \code{FALSE} otherwise.
 }
 \description{
 Check whether input is a valid course_id
 }
 \examples{
 is_course_id("ECON381D1Fa19")
+is_course_id("ECON381D1Fa19", strict = TRUE)
+is_course_id("NOT A VALID COURSE ID")
 }

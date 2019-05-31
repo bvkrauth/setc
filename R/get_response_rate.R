@@ -1,12 +1,15 @@
 #' Finds response rate information in SETC report
 #'
-#' @param report_text SETC report text
-#' @param row_name string
+#' @param report_text The text of an SETC report, normally
+#'   obtained with \code{\link{get_report_text}}.
 #'
-#' @return
+#' @param row_name A string, either "Responded" or "Invited"
+#'
+#' @return A number, either the number of students invited
+#'   to the SETC survey, or the number who responded.
+#'
 #' @export
 #'
-#' @examples
 get_response_rate <- function(report_text, row_name = "Responded"){
   report_text[stringr::str_detect(report_text,
                                   row_name)] %>% # Find the line in the text

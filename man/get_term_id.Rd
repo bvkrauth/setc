@@ -7,12 +7,21 @@
 get_term_id(term = stringr::str_sub(course_id, -4), course_id = NULL)
 }
 \arguments{
-\item{term}{numeric}
+\item{term}{A vector of strings that are valid terms,
+e.g. "Sp17"}
 
-\item{course_id}{string}
+\item{course_id}{A vector of strings that are valid course IDs,
+e.g., "ECON381D1Sp17"}
+}
+\value{
+A numeric vector of term IDs, e.g 1171.
 }
 \description{
 Extract term_id (e.g. 1171) from either a term or a course_id
+}
+\details{
+Either \code{term} or \code{course_id} can be provided, though
+\code{course_id} should be named.
 }
 \examples{
 get_term_id(term="Fa17")

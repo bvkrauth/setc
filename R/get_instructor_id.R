@@ -46,14 +46,10 @@ get_instructor_id <- function(report_name, term=NULL){
     stringr::str_replace_all("[[:space:] .]", "")
   if (any(term == "Fa16")) {
     # Clean up the report_name
-    clean_report_name <- report_name %>%
-      stringr::str_replace_all(" \\(", "") %>%
-      stringr::str_replace_all("BUEC", "ECON") %>%
-      stringr::str_replace_all("WD", "D")
     # Construct the (preliminary) instructor_id
     # It will take the form FirstnameLastname
-    fa16_instructor_id <- stringr::str_split(clean_report_name,
-                                        "ECON ",
+    fa16_instructor_id <- stringr::str_split(report_name,
+                                        "\\(",
                                         simplify = TRUE,
                                         n = 2)[, 1] %>%
       stringr::str_replace_all("[[:space:] .]", "")

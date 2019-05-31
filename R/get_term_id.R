@@ -1,9 +1,18 @@
 #' Extract term_id (e.g. 1171) from either a term or a course_id
 #'
-#' @param term numeric
-#' @param course_id string
+#' Extract term_id (e.g. 1171) from either a term or a course_id
 #'
-#' @return
+#' Either \code{term} or \code{course_id} can be provided, though
+#' \code{course_id} should be named.
+#'
+#' @param term A vector of strings that are valid terms,
+#'   e.g. "Sp17"
+#'
+#' @param course_id A vector of strings that are valid course IDs,
+#'  e.g., "ECON381D1Sp17"
+#'
+#' @return A numeric vector of term IDs, e.g 1171.
+#'
 #' @export
 #'
 #' @examples
@@ -13,7 +22,7 @@ get_term_id <- function(term = stringr::str_sub(course_id, -4),
                         course_id = NULL){
   is_term <- term %>%
     stringr::str_detect("^(Fa|Sp|Su)[0-9]{2}$")
-  if (!all(is_term)) {
+  if (!all(is_term) | length(is_term) == 0) {
     stop("Invalid term: ", term)
   }
   season <- stringr::str_sub(term, 1, 2)

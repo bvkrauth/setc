@@ -10,11 +10,14 @@ get_term(input, from = "report_name")
 \item{input}{A string.}
 
 \item{from}{A string describing the nature of the input. Currently
-supported values include "report_name"}
+supported values include "report_name" and "term_folder"}
 }
 \value{
 A string identifying a term, e.g. "Fa18"
 }
 \description{
 Title
+}
+\examples{
+get_term("1171 - Spring 2017", from = "term_folder")
 }

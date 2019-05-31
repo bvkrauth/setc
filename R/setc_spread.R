@@ -5,9 +5,9 @@
 #' "n", "mean", "median", and "sd"
 #'
 #' @return A tibble
+#'
 #' @export
 #'
-#' @examples
 setc_spread <- function(dat, stat="mean"){
   tmpdat <- dat %>%
     dplyr::select("course_id",

@@ -7,7 +7,11 @@
 get_report_text(report_path)
 }
 \arguments{
-\item{report_path}{string}
+\item{report_path}{A string giving the full path to
+a PDF file containing a course-lvel SETC report}
+}
+\value{
+A vector of strings, the text of the report.
 }
 \description{
 Get report text

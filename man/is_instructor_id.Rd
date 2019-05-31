@@ -2,15 +2,25 @@
 % Please edit documentation in R/is_instructor_id.R
 \name{is_instructor_id}
 \alias{is_instructor_id}
-\title{Checks for a valid instructor_id (to be added)}
+\title{Checks for a valid instructor ID}
 \usage{
 is_instructor_id(instructor_id, strict = FALSE)
 }
 \arguments{
-\item{instructor_id}{string}
+\item{instructor_id}{A vector of strings}
 
-\item{strict}{logical}
+\item{strict}{A logical scalar (currently ignored).}
+}
+\value{
+A logical vector, each element of which is TRUE
+ if the corresponding element of \code{instructor_id} is
+ a valid instructor ID.
 }
 \description{
-Checks for a valid instructor_id (to be added)
+\code{is_instructor_id} checks to see if its input
+is a valid instructor IDs.  Instructor IDs should
+be alphabetic strings.
+}
+\examples{
+is_instructor_id("JoeSmith")
 }

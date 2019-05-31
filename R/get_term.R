@@ -2,17 +2,21 @@
 #'
 #' @param input A string.
 #' @param from A string describing the nature of the input. Currently
-#' supported values include "report_name"
+#' supported values include "report_name" and "term_folder"
 #'
 #'
 #' @return A string identifying a term, e.g. "Fa18"
+#'
 #' @export
 #'
 #' @examples
+#' get_term("1171 - Spring 2017", from = "term_folder")
 get_term <- function(input, from="report_name"){
   term <- NULL
   if (from == "report_name") {
-    season <- stringr::str_sub(stringr::str_extract(input, "(Fall|Spring|Summer)"), 1, 2)
+    season <- stringr::str_sub(stringr::str_extract(input,
+                                                    "(Fall|Spring|Summer)"),
+                               1, 2)
     yr <- stringr::str_sub(stringr::str_split(input,
                                               "(Fall|Spring|Summer)",
                                               simplify = TRUE,

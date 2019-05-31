@@ -6,7 +6,7 @@ test_that("function is case insensitive if strict = FALSE (default)", {
   expect_equal(is_course_id("ECON381D1fA16"), TRUE)
 })
 
-test_that("function allows other units", {
+test_that("function allows 2-character and 3-character units", {
   expect_equal(is_course_id("IS381D1Fa16"), TRUE)
   expect_equal(is_course_id("GSWS381D1Fa16"), TRUE)
 })
@@ -37,11 +37,13 @@ test_that("function does not allow extra length", {
 })
 
 test_that("function handles vectors", {
-  expect_equal(is_course_id(c("ECON381D1Fa16", "ECON105G1Sp19")), TRUE)
-  expect_equal(is_course_id(c("ECON381D1Fa16", "A")), FALSE)
+  expect_equal(is_course_id(c("ECON381D1Fa16", "ECON105G1Sp19")),
+               c(TRUE, TRUE))
+  expect_equal(is_course_id(c("ECON381D1Fa16", "A")),
+               c(TRUE, FALSE))
 })
 
-context("When strict = TRUE")
+context("strict = TRUE")
 
 test_that("function is case sensitive when strict=TRUE", {
   expect_equal(is_course_id("ECON381D1Fa16", strict = TRUE), TRUE)

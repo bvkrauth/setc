@@ -2,7 +2,7 @@
 % Please edit documentation in R/setc_save.R
 \name{setc_save}
 \alias{setc_save}
-\title{Title}
+\title{Save SETC data in a convenient form.}
 \usage{
 setc_save(dat, as, output_folder)
 }
@@ -13,6 +13,9 @@ setc_save(dat, as, output_folder)
 
 \item{output_folder}{The folder into which the data should be saved}
 }
+\value{
+Returns \code{dat} invisibly.
+}
 \description{
-Title
+Save SETC data in a convenient form.
 }

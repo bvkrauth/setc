@@ -7,7 +7,10 @@
 get_term_folder_name(term)
 }
 \arguments{
-\item{term}{string}
+\item{term}{A string giving the term (e.g. "Sp17")}
+}
+\value{
+A string giving the associated term folder (e.g., "1171 - Spring 2017")
 }
 \description{
 Extracts term folder name ("1171 - Spring 2017") from the term ("Sp17")

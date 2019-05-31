@@ -7,9 +7,14 @@
 get_response_rate(report_text, row_name = "Responded")
 }
 \arguments{
-\item{report_text}{SETC report text}
+\item{report_text}{The text of an SETC report, normally
+obtained with \code{\link{get_report_text}}.}
 
-\item{row_name}{string}
+\item{row_name}{A string, either "Responded" or "Invited"}
+}
+\value{
+A number, either the number of students invited
+  to the SETC survey, or the number who responded.
 }
 \description{
 Finds response rate information in SETC report

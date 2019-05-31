@@ -22,7 +22,6 @@
 #'
 #' @export
 #'
-#' @examples
 get_comments <- function(report_text, course_id = ""){
   comments <- NULL
   comment_appearance <- stringr::str_which(report_text,
