@@ -7,11 +7,6 @@ test_that("Basic functionality", {
   expect_equal(is_instructor_id(""), FALSE)
 })
 
-test_that("Should reject spaces", {
-  #  expect_equal(is_instructor_id("Brian Krauth"), FALSE)
-})
-
-
 test_that("Function handles vectors", {
   expect_equal(is_instructor_id(c("BrianKrauth", "JoeSmith")), TRUE)
   expect_equal(is_instructor_id(c("BrianKrauth", " ")), FALSE)
