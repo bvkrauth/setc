@@ -7,7 +7,7 @@
 setc_save(dat, as, output_folder)
 }
 \arguments{
-\item{dat}{A tibble or data frame}
+\item{dat}{A tibble, data frame, or list of them.}
 
 \item{as}{A string indicating the type of data.}
 
@@ -17,5 +17,18 @@ setc_save(dat, as, output_folder)
 Returns \code{dat} invisibly.
 }
 \description{
-Save SETC data in a convenient form.
+\code{setc_save} saves an SETC data object in both
+CSV and Rdata formats.
+}
+\details{
+If \code{dat} is a data frame (or tibble), \code{setc_save}
+will save \code{dat} in the files \code{[as]}.csv and
+\code{[as]}.Rdata, where \code{[as]} is the value of the
+\code{as = } argument.
+
+If \code{dat} is a list of data frames (or tibbles),
+\code{setc_save} will save \code{dat} in the file
+\code{[as]}.Rdata and each data frame in dat
+as the file \code{[as]}_\code{[data frame name]}.csv.
+.
 }
