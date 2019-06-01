@@ -33,6 +33,8 @@ CSV files should be named according to the convention
 \code{Fa18_comments.csv}.
 
 Once the term-by-term CSV files have been generated,
+which saves the data to CSV files. Once the term-by-term
+CSV files have been generated,
 use this function to pool them into a single data file.
 }
 \examples{
