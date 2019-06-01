@@ -20,22 +20,30 @@
 #'
 #' @param output_folder The folder into which the data should be saved
 #'
+#' @param save_rdata,save_csv Optional logical.  If
+#'   \code{FALSE}, a file of the given format will not be
+#'   saved.
+#'
 #' @return Returns \code{dat} invisibly.
 #'
 #' @export
 #'
-setc_save <- function(dat, as, output_folder){
-  if (is.data.frame(dat)) {
-    dat %>%
-      readr::write_excel_csv(stringr::str_c(output_folder, as, ".csv"))
-  } else {
-    datnames <- names(dat)
-    for (i in 1:length(datnames)){
-      dat[[datnames[i]]] %>%
-        readr::write_excel_csv(stringr::str_c(output_folder, as, "_", datnames[i], ".csv"))
+setc_save <- function(dat, as, output_folder, save_rdata = TRUE, save_csv = TRUE){
+  if (save_csv){
+    if (is.data.frame(dat)) {
+      dat %>%
+        readr::write_excel_csv(stringr::str_c(output_folder, as, ".csv"))
+    } else {
+      datnames <- names(dat)
+      for (i in 1:length(datnames)){
+        dat[[datnames[i]]] %>%
+          readr::write_excel_csv(stringr::str_c(output_folder, as, "_", datnames[i], ".csv"))
+      }
     }
   }
-  dat %>%
-    save(file = stringr::str_c(output_folder, as, ".RData"))
+  if (save_rdata){
+    dat %>%
+      save(file = stringr::str_c(output_folder, as, ".RData"))
+  }
   invisible(dat)
 }

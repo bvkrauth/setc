@@ -4,7 +4,7 @@
 \alias{setc_save}
 \title{Save SETC data in a convenient form.}
 \usage{
-setc_save(dat, as, output_folder)
+setc_save(dat, as, output_folder, save_rdata = TRUE, save_csv = TRUE)
 }
 \arguments{
 \item{dat}{A tibble, data frame, or list of them.}
@@ -12,6 +12,10 @@ setc_save(dat, as, output_folder)
 \item{as}{A string indicating the type of data.}
 
 \item{output_folder}{The folder into which the data should be saved}
+
+\item{save_rdata, save_csv}{Optional logical.  If
+\code{FALSE}, a file of the given format will not be
+saved.}
 }
 \value{
 Returns \code{dat} invisibly.
