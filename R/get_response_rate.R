@@ -1,5 +1,10 @@
 #' Finds response rate information in SETC report
 #'
+#' \code{get_response_rate} finds SETC response rate information from
+#' the PDF text.
+#' If row_name = "Responded", it finds the number who responded to the survey
+#' if row_name =  "Invited", it finds the number who were invited to the survey
+#'
 #' @param report_text The text of an SETC report, normally
 #'   obtained with \code{\link{get_report_text}}.
 #'
@@ -18,6 +23,3 @@ get_response_rate <- function(report_text, row_name = "Responded"){
     as.numeric() %>% # Convert to a number
     dplyr::first() # Take first matching line
 }
-# GET_RESPONSE_RATE finds SETC response rate information from the PDF text
-# if ROW_NAME="Responded", it finds the number who responded to the survey
-# if ROW_NAME="Invited", it finds the number who were invited to the survey

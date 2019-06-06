@@ -17,5 +17,8 @@ A number, either the number of students invited
   to the SETC survey, or the number who responded.
 }
 \description{
-Finds response rate information in SETC report
+\code{get_response_rate} finds SETC response rate information from
+the PDF text.
+If row_name = "Responded", it finds the number who responded to the survey
+if row_name =  "Invited", it finds the number who were invited to the survey
 }
