@@ -52,11 +52,13 @@ setc_sd <- function(dat){
 #' @rdname setc_stats
 #' @export
 setc_median <- function(dat){
+  tmp_median <- NA
   halfway <- setc_n(dat) / 2
   tmp_median <- 1 +
     (dat$score_1 < halfway) +
     (dat$score_1 + dat$score_2 < halfway) +
     (dat$score_1 + dat$score_2 + dat$score_3 < halfway) +
     (dat$score_1 + dat$score_2 + dat$score_3 + dat$score_4 < halfway)
+  tmp_median[halfway == 0] <- NA
   tmp_median
 }

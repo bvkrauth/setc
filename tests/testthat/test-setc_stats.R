@@ -35,6 +35,12 @@ test_that("no observations", {
                                      score_4 = 0,
                                      score_5 = 0)),
                0)
+  expect_equal(is.na(setc_median(tibble::tibble(score_1 = 0,
+                                                score_2 = 0,
+                                                score_3 = 0,
+                                                score_4 = 0,
+                                                score_5 = 0))),
+               TRUE)
   expect_equal(is.na(setc_mean(tibble::tibble(score_1 = 0,
                                               score_2 = 0,
                                               score_3 = 0,
@@ -51,14 +57,8 @@ test_that("no observations", {
 
 
 
-test_that("median is NA when no observations", {
-  #  expect_equal(is.na(setc_median(tibble::tibble(score_1 = 0,
-#                                                score_2 = 0,
-#                                                score_3 = 0,
-#                                               score_4 = 0,
-#                                                score_5 = 0))),
-#               TRUE)
-})
+
+
 
 test_that("distribution supressed (NA)", {
   expect_equal(is.na(setc_n(tibble::tibble(score_1 = NA,
