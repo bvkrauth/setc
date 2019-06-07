@@ -1,3 +1,5 @@
+context("get_setc_data - normal")
+
 test_that("Basic functionality", {
   expect_equal(
     nrow(get_setc_data(

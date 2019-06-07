@@ -1,3 +1,5 @@
+context("is_instructor_data - normal")
+
 test_that("Basic functionality", {
   expect_equal(
     is_instructor_data(tibble::tibble(instructor_id = c("Bob", "Joe"))),

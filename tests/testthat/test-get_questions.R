@@ -1,3 +1,5 @@
+context("get_questions - normal")
+
 test_that("Basic functionality", {
   expect_equal(nrow(get_questions("../data/econ_question_list.csv")),
                19)

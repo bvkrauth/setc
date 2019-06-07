@@ -1,3 +1,5 @@
+context("get_report_text - normal")
+
 test_that("Basic functionality", {
   expect_equal(length(get_report_text(
     "../data/BrianKrauth-ECON381D100-Spring2017.pdf")),

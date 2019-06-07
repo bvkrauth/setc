@@ -1,3 +1,5 @@
+context("get_response_rate - normal")
+
 test_that("Basic functionality", {
   expect_equal(get_response_rate(c("IRRELEVANT TEXT",
                                    "Responded        26",

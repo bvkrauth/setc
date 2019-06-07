@@ -1,3 +1,5 @@
+context("is_question_data - normal")
+
 test_that("Basic functionality", {
   expect_equal(
     is_question_data(tibble::tibble(question_id = c("BOB", "JOE"),

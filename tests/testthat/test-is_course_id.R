@@ -1,4 +1,5 @@
-context("Default settings (strict = FALSE)")
+context("is_course_id(strict = FALSE)")
+
 test_that("function is case insensitive if strict = FALSE (default)", {
   expect_equal(is_course_id("ECON381D1Fa16"), TRUE)
   expect_equal(is_course_id("econ381D1Fa16"), TRUE)
@@ -43,7 +44,7 @@ test_that("function handles vectors", {
                c(TRUE, FALSE))
 })
 
-context("strict = TRUE")
+context("is_course_id (strict = TRUE)")
 
 test_that("function is case sensitive when strict=TRUE", {
   expect_equal(is_course_id("ECON381D1Fa16", strict = TRUE), TRUE)

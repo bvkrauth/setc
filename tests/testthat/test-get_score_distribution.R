@@ -1,3 +1,5 @@
+context("get_score_distribution - normal")
+
 test_that("Basic functionality", {
   expect_equal(get_score_distribution(
     report_text = c("I attended class...",

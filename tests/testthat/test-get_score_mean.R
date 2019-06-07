@@ -1,4 +1,4 @@
-context("table_type = separate")
+context("get_score_mean(dat$table_type = separate)")
 
 test_that("Finds correct mean", {
   expect_equal(get_score_mean(report_text = c("I attended class...",
@@ -24,7 +24,7 @@ test_that("Deals with missing question", {
 })
 
 
-context("table_type = grouped")
+context("get_score_mean(dat$table_type = grouped)")
 
 test_that("Finds correct mean", {
   expect_equal(get_score_mean(report_text = c("                                                                                                              Mean SD   Resp",

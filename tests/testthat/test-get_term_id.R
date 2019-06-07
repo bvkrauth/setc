@@ -1,4 +1,4 @@
-context("term supplied")
+context("get_term_id (term supplied)")
 
 test_that("Basic functionality", {
   expect_equal(get_term_id("Fa18"), 1187)
@@ -15,7 +15,7 @@ test_that("Fails cleanly", {
   expect_error(get_term_id("NONSENSE"))
 })
 
-context("course_id supplied")
+context("get_term_id (course_id supplied)")
 
 test_that("Basic functionality", {
   expect_equal(get_term_id(course_id = "ECON381D1Fa18"), 1187)

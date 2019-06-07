@@ -1,4 +1,4 @@
-context("Normal")
+context("get_term_folder_name - normal")
 
 test_that("basic functionality", {
   expect_equal(get_term_folder_name("Fa17"), "1177 - Fall 2017")

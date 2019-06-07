@@ -1,6 +1,6 @@
-context("Normal")
+context("setc_stats - normal")
 
-test_that("basic functionality", {
+test_that("Basic functionality is correct", {
   expect_equal(setc_n(tibble::tibble(score_1 = 1,
                                      score_2 = 1,
                                      score_3 = 1,
@@ -28,7 +28,10 @@ test_that("basic functionality", {
             0.01)
 })
 
-test_that("no observations", {
+
+context("setc_stats - NA/no observations")
+
+test_that("Proper handling when no observations", {
   expect_equal(setc_n(tibble::tibble(score_1 = 0,
                                      score_2 = 0,
                                      score_3 = 0,
@@ -55,12 +58,7 @@ test_that("no observations", {
                TRUE)
 })
 
-
-
-
-
-
-test_that("distribution supressed (NA)", {
+test_that("Supressed distribution (NA) correctly handled", {
   expect_equal(is.na(setc_n(tibble::tibble(score_1 = NA,
                                            score_2 = NA,
                                            score_3 = NA,

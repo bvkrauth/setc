@@ -1,4 +1,4 @@
-context("Normal")
+context("is_instructor_id - normal")
 
 test_that("Basic functionality", {
   expect_equal(is_instructor_id("BrianKrauth"), TRUE)

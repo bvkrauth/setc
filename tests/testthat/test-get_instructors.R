@@ -1,3 +1,5 @@
+context("get_instructors - normal")
+
 test_that("Basic functionality", {
   expect_equal(nrow(get_instructors("../data/econ_instructor_list.csv")),
                48)

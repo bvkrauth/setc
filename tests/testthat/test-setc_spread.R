@@ -1,3 +1,5 @@
+context("setc_spread - normal")
+
 test_that("Basic functionality", {
   expect_equal(nrow(
     setc_spread(dat = tibble::tibble(

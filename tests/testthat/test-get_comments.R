@@ -1,4 +1,4 @@
-context("Normal")
+context("get_comments - normal")
 
 test_that("Returns comments if there are comments", {
   expect_equal(

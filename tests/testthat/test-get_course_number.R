@@ -1,4 +1,4 @@
-context("Normal")
+context("get_course_number - normal")
 
 test_that("Basic functionality", {
   expect_equal(get_course_number(course_id = "ECON105D1Fa18"), 105)
