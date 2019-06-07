@@ -5,11 +5,11 @@
 #'
 #' If called with no arguments, \code{get_questions} will assemble
 #' a default list of questions that includes basic information on
-#' all SFU and FASS-level SETC multiple choice questions used
+#' all SFU-level and FASS-level SETC multiple choice questions used
 #' through the Spring 2019 term.
 #'
 #' The \code{question_file} option can be used to include additional
-#' department-level or faculty-level (if not FASS) questions,
+#' department-level or faculty-level questions,
 #' or additional information on questions.  The file should
 #' be a CSV file in which the first row gives variable names
 #' and each additional row corresponds to a question.  Questions
@@ -46,7 +46,7 @@
 #' }
 get_questions <- function(question_file = NULL){
   if (is.null(question_file)) {
-    question <- get_default_questions()
+    question <- get_fass_questions()
   } else {
     question <- readr::read_csv(question_file)
   }
@@ -62,7 +62,7 @@ get_questions <- function(question_file = NULL){
   question
 }
 
-get_default_questions <- function(){
+get_fass_questions <- function(){
   structure(list(question_id = c("ACTI", "APPR", "ASES", "ATND",
                                  "CONC", "CONN", "CRIT", "EASY",
                                  "ENVI", "EXPT", "GDCT", "MORE",
@@ -125,24 +125,7 @@ get_default_questions <- function(){
                              "Strongly Agree", "Very Easy", "Strongly Agree",
                              "Strongly Agree", "Strongly Agree",
                              "Strongly Agree", "Strongly Agree", "Very Good",
-                             "Strongly Agree"),
-                 question_note = c(NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
-                                   NA, NA, NA, NA, NA),
-                 score_legend = c("Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Never | Rarely | About half of the time | Most of the time | All of the time",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Very Hard | Hard | Medium | Easy | Very Easy",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree",
-                                  "Very Poor | Poor | Fair | Good | Very Good",
-                                  "Strongly Disagree | Disagree | No Opinion | Agree | Strongly Agree")),
+                             "Strongly Agree")),
             row.names = c(NA, -15L),
             class = c("tbl_df", "tbl", "data.frame"))
 }

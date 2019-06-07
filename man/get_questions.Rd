@@ -23,11 +23,11 @@ SETC multiple choice questions for use by \code{\link{get_setc_data}}.
 \details{
 If called with no arguments, \code{get_questions} will assemble
 a default list of questions that includes basic information on
-all SFU and FASS-level SETC multiple choice questions used
+all SFU-level and FASS-level SETC multiple choice questions used
 through the Spring 2019 term.
 
 The \code{question_file} option can be used to include additional
-department-level or faculty-level (if not FASS) questions,
+department-level or faculty-level questions,
 or additional information on questions.  The file should
 be a CSV file in which the first row gives variable names
 and each additional row corresponds to a question.  Questions
