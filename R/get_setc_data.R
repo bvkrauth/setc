@@ -48,6 +48,10 @@
 #'   the user to specify it directly (for example, in the case where the file names
 #'   have been altered)
 #'
+#' @param quietly Optional logical. If FALSE (the default), some intermediate
+#'   information will be printed to show progress.  IF TRUE, the information will
+#'   not be printed.
+#'
 #' @return A list with two components:
 #'
 #'   \code{course}, a tibble (data frame) in which each row is a course
@@ -76,7 +80,8 @@ get_setc_data <- function(report_folder = NULL,
                           question_file = NULL,
                           instructor_file = NULL,
                           course_id = NULL,
-                          instructor_id = NULL) {
+                          instructor_id = NULL,
+                          quietly = FALSE) {
   # Possible error cases:
   # Neither report_folder nor report_file provided
   # report_folder is empty or has no PDF files
@@ -180,12 +185,14 @@ get_setc_data <- function(report_folder = NULL,
       # We won't use these as we have this information elsewhere
     }
     # Print out some information about what we've found
-    cat(course$course_id[i],
-        course$course_number[i],
-        course$instructor_id[i],
-        course$invited[i],
-        course$responded[i],
-        "\n")
+    if (!quietly){
+      cat(course$course_id[i],
+          course$course_number[i],
+          course$instructor_id[i],
+          course$invited[i],
+          course$responded[i],
+          "\n")
+    }
   }
   # Extract summary statistics from the detailed distribution
   # score_n is total number of observations

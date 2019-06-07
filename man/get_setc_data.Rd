@@ -6,7 +6,7 @@
 \usage{
 get_setc_data(report_folder = NULL, report_file = NULL,
   question_file = NULL, instructor_file = NULL, course_id = NULL,
-  instructor_id = NULL)
+  instructor_id = NULL, quietly = FALSE)
 }
 \arguments{
 \item{report_folder}{A string identifying the folder containing SETC report files.}
@@ -28,6 +28,10 @@ have been altered)}
 the instructor_id can be recovered from the SETC file name, but this option allows
 the user to specify it directly (for example, in the case where the file names
 have been altered)}
+
+\item{quietly}{Optional logical. If FALSE (the default), some intermediate
+information will be printed to show progress.  IF TRUE, the information will
+not be printed.}
 }
 \value{
 A list with two components:
