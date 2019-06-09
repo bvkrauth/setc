@@ -1,9 +1,9 @@
 #' Read in additional question information as a tibble
 #'
-#' \code{get_questions} assembles a tibble containing information on
+#' \code{get_question_data} assembles a tibble containing information on
 #' SETC multiple choice questions for use by \code{\link{get_setc_data}}.
 #'
-#' If called with no arguments, \code{get_questions} will assemble
+#' If called with no arguments, \code{get_question_data} will assemble
 #' a default list of questions that includes basic information on
 #' all SFU-level and FASS-level SETC multiple choice questions used
 #' through the Spring 2019 term.
@@ -40,26 +40,26 @@
 #' @seealso \code{\link{get_instructor_data}}, \code{\link{get_setc_data}}.
 #'
 #' @examples
-#' get_questions()
+#' get_question_data()
 #' \dontrun{
-#' get_questions("..\data\master\master question list.csv")
+#' get_question_data("..\data\master\master question list.csv")
 #' }
-get_questions <- function(question_file = NULL){
+get_question_data <- function(question_file = NULL){
   if (is.null(question_file)) {
-    question <- get_fass_questions()
+    question_data <- get_fass_questions()
   } else {
-    question <- readr::read_csv(question_file)
+    question_data <- readr::read_csv(question_file)
   }
-  if (!is_question_data(question)){
+  if (!is_question_data(question_data)){
     stop("Invalid question data in ", question_file)
   }
-  question$score_legend <- stringr::str_c(question$label_1,
-                                          question$label_2,
-                                          question$label_3,
-                                          question$label_4,
-                                          question$label_5,
+  question_data$score_legend <- stringr::str_c(question_data$label_1,
+                                          question_data$label_2,
+                                          question_data$label_3,
+                                          question_data$label_4,
+                                          question_data$label_5,
                                           sep = " | ")
-  question
+  question_data
 }
 
 get_fass_questions <- function(){

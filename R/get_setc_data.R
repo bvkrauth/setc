@@ -36,7 +36,7 @@
 #'   additional instructor information to be passed on to \code{\link{get_instructor_data}}.
 #'
 #' @param question_file Optional string, the location of a file containing
-#'   additional question information to be passed on to \code{\link{get_questions}}
+#'   additional question information to be passed on to \code{\link{get_question_data}}
 #'
 #' @param course_id Optional vector of strings, same length as report_file. Normally
 #'   the course_id can be recovered from the SETC file name, but this option allows
@@ -68,7 +68,7 @@
 #'
 #' @export
 #'
-#' @seealso \code{\link{get_instructor_data}}, \code{\link{get_questions}},
+#' @seealso \code{\link{get_instructor_data}}, \code{\link{get_question_data}},
 #'   \code{\link{pool_setc_data}}.
 #'
 #' @examples
@@ -101,7 +101,7 @@ get_setc_data <- function(report_folder = NULL,
   # Read from master instructor list
   instructor <- get_instructor_data(instructor_file = instructor_file)
   # Read from master question list
-  question <- get_questions(question_file = question_file)
+  question <- get_question_data(question_file = question_file)
   number_of_questions <- nrow(question)
   # Create course-level tibble
   # Each course has a PDF file in report_name, so that is how we build the list

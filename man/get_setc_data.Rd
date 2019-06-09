@@ -14,7 +14,7 @@ get_setc_data(report_folder = NULL, report_file = NULL,
 \item{report_file}{A vector of strings listing the SETC report files.}
 
 \item{question_file}{Optional string, the location of a file containing
-additional question information to be passed on to \code{\link{get_questions}}}
+additional question information to be passed on to \code{\link{get_question_data}}}
 
 \item{instructor_file}{Optional string, the location of a file providing
 additional instructor information to be passed on to \code{\link{get_instructor_data}}.}
@@ -84,6 +84,6 @@ get_setc_data("Sp17", "../SETC reports/1171 - Spring 2017")
 }
 }
 \seealso{
-\code{\link{get_instructor_data}}, \code{\link{get_questions}},
+\code{\link{get_instructor_data}}, \code{\link{get_question_data}},
   \code{\link{pool_setc_data}}.
 }
