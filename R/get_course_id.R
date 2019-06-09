@@ -33,7 +33,7 @@
 #' get_course_id("BrianKrauth -ECON105D100-Fall2018.pdf", term="Fa18")
 get_course_id <- function(report_name, term=NULL){
   if (is.null(term)) {
-    term <- get_term(report_name, from = "report_name")
+    term <- get_term(report_name = report_name)
   }
   clean_report_name <- report_name %>%
     stringr::str_replace_all("BUEC", "ECON") %>%

@@ -4,13 +4,10 @@
 \alias{get_term}
 \title{Title}
 \usage{
-get_term(input, from = "report_name")
+get_term(report_name = NULL, term_folder = NULL)
 }
 \arguments{
-\item{input}{A string.}
-
-\item{from}{A string describing the nature of the input. Currently
-supported values include "report_name" and "term_folder"}
+\item{report_name, term_folder}{A vector of strings}
 }
 \value{
 A string identifying a term, e.g. "Fa18"
@@ -19,5 +16,5 @@ A string identifying a term, e.g. "Fa18"
 Title
 }
 \examples{
-get_term("1171 - Spring 2017", from = "term_folder")
+get_term(term_folder = "1171 - Spring 2017")
 }

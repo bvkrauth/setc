@@ -30,7 +30,7 @@
 #' get_course_id("BrianKrauth -ECON105D100-Fall2018.pdf", term="Fa18")
 get_instructor_id <- function(report_name, term=NULL){
   if (is.null(term)) {
-    term <- get_term(report_name, from = "report_name")
+    term <- get_term(report_name = report_name)
   }
   # The document name format was slightly different in Fall 2016
   # The document name follows a consistent format in all other terms
