@@ -15,7 +15,7 @@ test_that("Basic functionality", {
 
 test_that("Fails cleanly", {
   expect_error(get_questions("../data/file that does not exist.csv"))
-  expect_error(suppressWarnings(get_instructors(
+  expect_error(suppressWarnings(get_questions(
     "../data/Brian Krauth (ECON 835 (G100) - Econometrics)_Fall_2016.pdf")))
   expect_error(get_questions("../data/econ_instructor_list.csv"))
 })

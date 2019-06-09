@@ -1,6 +1,6 @@
 #' Read in additional instructor information as a tibble
 #'
-#' \code{get_instructors} reads additional instructor information
+#' \code{get_instructor_data} reads additional instructor information
 #' from \code{instructor_file}, if it is provided.
 #'
 #' If provided, \code{instructor_file} should be a CSV file in which the top
@@ -17,26 +17,26 @@
 #' containing instructor information.
 #'
 #' If \code{instructor_file}
-#' is not provided, \code{get_instructors} returns NULL.
+#' is not provided, \code{get_instructor_data} returns NULL.
 #'
 #' @export
 #'
 #' @examples
-#' get_instructors()
+#' get_instructor_data()
 #' \dontrun{
-#' get_instructors("..\data\master\master intructor list.csv")
+#' get_instructor_data("..\data\master\master intructor list.csv")
 #' }
-get_instructors <- function(instructor_file = NULL){
+get_instructor_data <- function(instructor_file = NULL){
   if (is.null(instructor_file)){
-    instructor <- tibble::tibble(instructor_id = character(0))
+    instructor_data <- tibble::tibble(instructor_id = character(0))
   } else {
     if (!file.exists(instructor_file)){
       stop("File does not exist: ", instructor_file)
     }
-    instructor <- readr::read_csv(instructor_file)
-    if (!is_instructor_data(instructor)){
+    instructor_data <- readr::read_csv(instructor_file)
+    if (!is_instructor_data(instructor_data)){
       stop("Invalid instructor data in ", instructor_file)
     }
   }
-  instructor
+  instructor_data
 }

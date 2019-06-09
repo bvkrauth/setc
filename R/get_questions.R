@@ -37,7 +37,7 @@
 #'
 #' @export
 #'
-#' @seealso \code{\link{get_instructors}}, \code{\link{get_setc_data}}.
+#' @seealso \code{\link{get_instructor_data}}, \code{\link{get_setc_data}}.
 #'
 #' @examples
 #' get_questions()

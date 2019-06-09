@@ -33,7 +33,7 @@
 #' @param report_file A vector of strings listing the SETC report files.
 #'
 #' @param instructor_file Optional string, the location of a file providing
-#'   additional instructor information to be passed on to \code{\link{get_instructors}}.
+#'   additional instructor information to be passed on to \code{\link{get_instructor_data}}.
 #'
 #' @param question_file Optional string, the location of a file containing
 #'   additional question information to be passed on to \code{\link{get_questions}}
@@ -68,7 +68,7 @@
 #'
 #' @export
 #'
-#' @seealso \code{\link{get_instructors}}, \code{\link{get_questions}},
+#' @seealso \code{\link{get_instructor_data}}, \code{\link{get_questions}},
 #'   \code{\link{pool_setc_data}}.
 #'
 #' @examples
@@ -99,7 +99,7 @@ get_setc_data <- function(report_folder = NULL,
     instructor_id <- get_instructor_id(report_name)
   }
   # Read from master instructor list
-  instructor <- get_instructors(instructor_file = instructor_file)
+  instructor <- get_instructor_data(instructor_file = instructor_file)
   # Read from master question list
   question <- get_questions(question_file = question_file)
   number_of_questions <- nrow(question)

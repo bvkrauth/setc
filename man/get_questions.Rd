@@ -52,5 +52,5 @@ get_questions("..\\data\\master\\master question list.csv")
 }
 }
 \seealso{
-\code{\link{get_instructors}}, \code{\link{get_setc_data}}.
+\code{\link{get_instructor_data}}, \code{\link{get_setc_data}}.
 }

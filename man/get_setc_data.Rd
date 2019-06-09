@@ -17,7 +17,7 @@ get_setc_data(report_folder = NULL, report_file = NULL,
 additional question information to be passed on to \code{\link{get_questions}}}
 
 \item{instructor_file}{Optional string, the location of a file providing
-additional instructor information to be passed on to \code{\link{get_instructors}}.}
+additional instructor information to be passed on to \code{\link{get_instructor_data}}.}
 
 \item{course_id}{Optional vector of strings, same length as report_file. Normally
 the course_id can be recovered from the SETC file name, but this option allows
@@ -84,6 +84,6 @@ get_setc_data("Sp17", "../SETC reports/1171 - Spring 2017")
 }
 }
 \seealso{
-\code{\link{get_instructors}}, \code{\link{get_questions}},
+\code{\link{get_instructor_data}}, \code{\link{get_questions}},
   \code{\link{pool_setc_data}}.
 }
