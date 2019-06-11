@@ -86,6 +86,7 @@ get_setc_data <- function(report_folder = NULL,
   # Neither report_folder nor report_file provided
   # report_folder is empty or has no PDF files
   # Non-PDF files in report_file
+  .data <- NULL
   # Indicate where course-level SETC reports are
   if (is.null(report_file)){
     report_file <- dir(path = report_folder,
@@ -207,10 +208,10 @@ get_setc_data <- function(report_folder = NULL,
   # score_median is median of scores
   question_and_course$score_median <- setc_median(question_and_course)
   question_and_course <- question_and_course %>%
-    dplyr::mutate(term_id = get_term_id(course_id = course_id)) %>%
+    dplyr::mutate(term_id = get_term_id(course_id = .data$course_id)) %>%
     dplyr::left_join(dplyr::select(question,
-                                   question_id,
-                                   score_legend),
+                                   .data$question_id,
+                                   .data$score_legend),
                      by = "question_id")
   course <- course %>%
     dplyr::left_join(instructor,
@@ -221,20 +222,20 @@ get_setc_data <- function(report_folder = NULL,
                      by = "course_id") %>%
     dplyr::left_join(setc_spread(question_and_course, "legend"),
                      by = "course_id") %>%
-    dplyr::mutate(course_section = stringr::str_sub(course_id, 8, 9)) %>%
-    dplyr::mutate(season = stringr::str_sub(course_id, 10, 11)) %>%
+    dplyr::mutate(course_section = stringr::str_sub(.data$course_id, 8, 9)) %>%
+    dplyr::mutate(season = stringr::str_sub(.data$course_id, 10, 11)) %>%
     dplyr::mutate(year = 2000 +
-                    as.numeric(stringr::str_sub(course_id, 12, 13))) %>%
-    dplyr::mutate(academic_year = year - as.numeric(season != "Fa")) %>%
-    dplyr::arrange(term_id, course_number)
+                    as.numeric(stringr::str_sub(.data$course_id, 12, 13))) %>%
+    dplyr::mutate(academic_year = .data$year - as.numeric(.data$season != "Fa")) %>%
+    dplyr::arrange(.data$term_id, .data$course_number)
   comments <- comments %>%
     dplyr::left_join(dplyr::select(course,
-                                   course_id,
-                                   instructor_id,
-                                   term_id,
-                                   course_number),
+                                   .data$course_id,
+                                   .data$instructor_id,
+                                   .data$term_id,
+                                   .data$course_number),
                      by = "course_id") %>%
     dplyr::mutate(course_number = get_course_number(course_id = course_id)) %>%
-    dplyr::arrange(term_id, course_id, comment_number)
+    dplyr::arrange(.data$term_id, .data$course_id, .data$comment_number)
   invisible(list(course = course, comments = comments))
 }
