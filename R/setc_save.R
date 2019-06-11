@@ -28,7 +28,11 @@
 #'
 #' @export
 #'
-setc_save <- function(dat, as, output_folder, save_rdata = TRUE, save_csv = TRUE){
+setc_save <- function(dat,
+                      as,
+                      output_folder,
+                      save_rdata = TRUE,
+                      save_csv = TRUE){
   if (save_csv){
     if (is.data.frame(dat)) {
       dat %>%
@@ -37,7 +41,11 @@ setc_save <- function(dat, as, output_folder, save_rdata = TRUE, save_csv = TRUE
       datnames <- names(dat)
       for (i in 1:length(datnames)){
         dat[[datnames[i]]] %>%
-          readr::write_excel_csv(stringr::str_c(output_folder, as, "_", datnames[i], ".csv"))
+          readr::write_excel_csv(stringr::str_c(output_folder,
+                                                as,
+                                                "_",
+                                                datnames[i],
+                                                ".csv"))
       }
     }
   }

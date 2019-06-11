@@ -62,6 +62,7 @@ get_question_data <- function(question_file = NULL){
   question_data
 }
 
+# nolint start
 get_fass_questions <- function(){
   structure(list(question_id = c("ACTI", "APPR", "ASES", "ATND",
                                  "CONC", "CONN", "CRIT", "EASY",
@@ -129,3 +130,4 @@ get_fass_questions <- function(){
             row.names = c(NA, -15L),
             class = c("tbl_df", "tbl", "data.frame"))
 }
+# nolint end

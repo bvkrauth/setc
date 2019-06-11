@@ -226,7 +226,8 @@ get_setc_data <- function(report_folder = NULL,
     dplyr::mutate(season = stringr::str_sub(.data$course_id, 10, 11)) %>%
     dplyr::mutate(year = 2000 +
                     as.numeric(stringr::str_sub(.data$course_id, 12, 13))) %>%
-    dplyr::mutate(academic_year = .data$year - as.numeric(.data$season != "Fa")) %>%
+    dplyr::mutate(academic_year = .data$year -
+                    as.numeric(.data$season != "Fa")) %>%
     dplyr::arrange(.data$term_id, .data$course_number)
   comments <- comments %>%
     dplyr::left_join(dplyr::select(course,

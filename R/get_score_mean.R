@@ -45,7 +45,7 @@ get_score_mean <- function(report_text, question){
       tmp <- tmptext[1:3] %>% # get the next few lines
         stringr::str_split("\\s+") %>% # Split up on white space
         unlist() %>% # Convert to vector
-        stringr::str_extract("[.|\\d]{0,}") %>% # Get rid of everything but digits
+        stringr::str_extract("[.|\\d]{0,}") %>% # Keep only digits and .
         as.numeric() # Convert from string to number
       # Now take the first number (i.e., non-NA) in TMP
       score_mean <- dplyr::first(tmp[!is.na(tmp)])

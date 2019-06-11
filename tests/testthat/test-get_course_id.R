@@ -1,5 +1,6 @@
 context("get_course_id - normal")
 
+# nolint start
 test_that("Basic functionality", {
   expect_equal(get_course_id("BrianKrauth -ECON105D100-Fall2018(SUP)_407d2700-5049-48d3-9ed5-465e7627b5d0en-US.pdf"),
                "ECON105D1Fa18")
@@ -47,3 +48,4 @@ test_that("Handles 2-character and 3-character departments (Fa16 term)", {
   expect_equal(get_course_id("Brian Krauth (IS 835 (G100) - Econometrics)_Fall_2016_ae41cc87-7609-4dbf-99bc-3c29f3c81e5ben-US.pdf"),
                "IS835G1Fa16")
 })
+# nolint end
