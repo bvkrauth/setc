@@ -13,7 +13,5 @@ test_that("Basic functionality", {
                     "         Never                               1        0         0.0%"),
     question = tibble::tibble(question_id = "ATND",
                               question_text = "I attended class")),
-               c(0,1,1,7,17))
+               c(0, 1, 1, 7, 17))
   })
-
-
