@@ -1,6 +1,7 @@
-#' Extract term_id (e.g. 1171) from either a term or a course_id
+#' Extract term ID from the course ID or term
 #'
-#' Extract term_id (e.g. 1171) from either a term or a course_id
+#' \code{get_term_id} extracts the term ID (e.g. 1171) from either a term
+#'   (e.g., "Fa17") or a course ID (e.g., "ECON103D1Fa17").
 #'
 #' Either \code{term} or \code{course_id} can be provided, though
 #' \code{course_id} should be named.

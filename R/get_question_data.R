@@ -1,7 +1,7 @@
-#' Read in additional question information as a tibble
+#' Read in additional question information from a CSV file
 #'
-#' \code{get_question_data} assembles a tibble containing information on
-#' SETC multiple choice questions for use by \code{\link{get_setc_data}}.
+#' \code{get_question_data} reads additional information on SETC
+#' multiple choice questions from \code{question_file}, if it is provided.
 #'
 #' If called with no arguments, \code{get_question_data} will assemble
 #' a default list of questions that includes basic information on

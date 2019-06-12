@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_term_id.R
 \name{get_term_id}
 \alias{get_term_id}
-\title{Extract term_id (e.g. 1171) from either a term or a course_id}
+\title{Extract term ID from the course ID or term}
 \usage{
 get_term_id(term = stringr::str_sub(course_id, -4), course_id = NULL)
 }
@@ -17,7 +17,8 @@ e.g., "ECON381D1Sp17"}
 A numeric vector of term IDs, e.g 1171.
 }
 \description{
-Extract term_id (e.g. 1171) from either a term or a course_id
+\code{get_term_id} extracts the term ID (e.g. 1171) from either a term
+  (e.g., "Fa17") or a course ID (e.g., "ECON103D1Fa17").
 }
 \details{
 Either \code{term} or \code{course_id} can be provided, though

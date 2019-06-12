@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_report_text.R
 \name{get_report_text}
 \alias{get_report_text}
-\title{Get report text}
+\title{Read in report text from a SETC report}
 \usage{
 get_report_text(report_path)
 }
@@ -14,5 +14,6 @@ a PDF file containing a course-lvel SETC report}
 A vector of strings, the text of the report.
 }
 \description{
-Get report text
+\code{get_report_text} reads in the text of an SETC report from
+the PDF file.
 }

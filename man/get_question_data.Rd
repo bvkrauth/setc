@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_question_data.R
 \name{get_question_data}
 \alias{get_question_data}
-\title{Read in additional question information as a tibble}
+\title{Read in additional question information from a CSV file}
 \usage{
 get_question_data(question_file = NULL)
 }
@@ -17,8 +17,8 @@ A tibble (data frame) in which each row corresponds to
  the variable \code{question_id}.
 }
 \description{
-\code{get_question_data} assembles a tibble containing information on
-SETC multiple choice questions for use by \code{\link{get_setc_data}}.
+\code{get_question_data} reads additional information on SETC
+multiple choice questions from \code{question_file}, if it is provided.
 }
 \details{
 If called with no arguments, \code{get_question_data} will assemble

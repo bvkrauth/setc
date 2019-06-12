@@ -1,4 +1,7 @@
-#' Get report text
+#' Read in report text from a SETC report
+#'
+#' \code{get_report_text} reads in the text of an SETC report from
+#' the PDF file.
 #'
 #' @param report_path A string giving the full path to
 #'   a PDF file containing a course-lvel SETC report

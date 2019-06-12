@@ -1,8 +1,14 @@
-#' Title
+#' Extract term  from the SETC report filename or term folder name
 #'
-#' @param report_name,term_folder A vector of strings
+#' \code{get_term} extracts the term  from the SETC report filename or term folder name
 #'
-#' @return A string identifying a term, e.g. "Fa18"
+#' @param report_name,term_folder A string or vector
+#'   of strings each of which identifies either the
+#'   SETC report filename or the term folder.
+#'   Either \code{report_name} or \code{term_folder}
+#'   must be provided, but not both.
+#'
+#' @return A string or vector of strings identifying the term, e.g. "Fa18"
 #'
 #' @export
 #'

@@ -1,10 +1,10 @@
-#' Read in additional instructor information as a tibble
+#' Read in additional instructor information from a CSV file
 #'
 #' \code{get_instructor_data} reads additional instructor information
 #' from \code{instructor_file}, if it is provided.
 #'
-#' If provided, \code{instructor_file} should be a CSV file in which the top
-#' row gives variable names, and each additional row corresponds
+#' If provided, \code{instructor_file} should be a CSV file in which
+#' the top row gives variable names, and each additional row corresponds
 #' to an instructor. Variables should include \code{instructor_id}
 #' so that this data can be linked to other SETC data. To avoid name
 #' conflicts, it is advisable for all variables to have the prefix
@@ -16,8 +16,8 @@
 #' @return If instructor_file is provided, a tibble (data frame)
 #' containing instructor information.
 #'
-#' If \code{instructor_file}
-#' is not provided, \code{get_instructor_data} returns NULL.
+#' If \code{instructor_file} is not provided,
+#' \code{get_instructor_data} returns NULL.
 #'
 #' @export
 #'

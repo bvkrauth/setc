@@ -6,7 +6,7 @@
 \alias{setc_mean}
 \alias{setc_sd}
 \alias{setc_median}
-\title{Calculate SETC statistics from frequency distribution.}
+\title{Calculate SETC statistics from the frequency distribution.}
 \usage{
 setc_n(dat)
 

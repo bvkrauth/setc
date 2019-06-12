@@ -1,4 +1,4 @@
-#' Check for valid question data
+#' Check whether input is valid question data
 #'
 #' \code{is_question_data} checks its input to see if it is
 #' a tibble (or data frame) in which each row contains a

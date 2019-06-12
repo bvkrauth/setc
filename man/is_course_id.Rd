@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_course_id.R
 \name{is_course_id}
 \alias{is_course_id}
-\title{Check whether input is a valid course_id}
+\title{Check whether input is a valid course ID}
 \usage{
 is_course_id(course_id, strict = FALSE)
 }
@@ -21,7 +21,7 @@ A logical vector equalling \code{TRUE} if the
   course ID, and \code{FALSE} otherwise.
 }
 \description{
-Check whether input is a valid course_id
+\code{is_course_id} checks whether its input is a valid course ID.
 }
 \examples{
 is_course_id("ECON381D1Fa19")

@@ -2,18 +2,20 @@
 % Please edit documentation in R/get_term_folder_name.R
 \name{get_term_folder_name}
 \alias{get_term_folder_name}
-\title{Extracts term folder name ("1171 - Spring 2017") from the term ("Sp17")}
+\title{Extract term folder name from the term}
 \usage{
 get_term_folder_name(term)
 }
 \arguments{
-\item{term}{A string giving the term (e.g. "Sp17")}
+\item{term}{A string or vector of strings agiving the term (e.g. "Sp17")}
 }
 \value{
-A string giving the associated term folder (e.g., "1171 - Spring 2017")
+A string or vector of strings giving the associated term
+  folder (e.g., "1171 - Spring 2017")
 }
 \description{
-Extracts term folder name ("1171 - Spring 2017") from the term ("Sp17")
+\code{get_term_folder_name} extracts a term folder name
+(e.g., "1171 - Spring 2017") from the term (e.g., "Sp17")
 }
 \examples{
 get_term_folder_name("Sp17")

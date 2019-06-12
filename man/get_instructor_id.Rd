@@ -18,8 +18,8 @@ A string (vector) giving the instructor ID that can be inferred
   from each \code{report_name}.
 }
 \description{
-\code{get_instructor_id} infers a valid \code{instructor_id} from the file
-name of a SETC report.
+\code{get_instructor_id} extracts  a valid instructor ID from the
+SETC report filename.
 }
 \details{
 An \code{instructor_id} takes the form "FirstnameLastname"

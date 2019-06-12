@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_course_number.R
 \name{get_course_number}
 \alias{get_course_number}
-\title{Get course number from a SETC report name or course ID}
+\title{Extract a course number from the course ID or SETC report filename}
 \usage{
 get_course_number(report_name = NULL, term = NULL,
   course_id = get_course_id(report_name, term = term))
@@ -19,8 +19,8 @@ file name of a SETC report}
 A vector of course numbers extracted from the input.
 }
 \description{
-\code{get_course_number} extracts the course number from
-a SETC report name or course ID.
+\code{get_course_number} extracts a course number from
+the course ID or SETC report filename.
 }
 \details{
 If both \code{report_name} and \code{course_id} are provided,

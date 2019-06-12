@@ -1,5 +1,9 @@
 #' Spread question_and_course level data out to course level data
 #'
+#' \code{setc_spread} spreads question_and_course=level data out to course-level data
+#'
+#' This function is used by \code{\link{get_setc_data}}.
+#'
 #' @param dat A tibble with course-and-question level SETC data
 #' @param stat A string indicating the statistic.  Valid values are
 #' "n", "mean", "median", and "sd"

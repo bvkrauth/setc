@@ -1,7 +1,7 @@
-#' Get course number from a SETC report name or course ID
+#' Extract a course number from the course ID or SETC report filename
 #'
-#' \code{get_course_number} extracts the course number from
-#' a SETC report name or course ID.
+#' \code{get_course_number} extracts a course number from
+#' the course ID or SETC report filename.
 #'
 #' If both \code{report_name} and \code{course_id} are provided,
 #' \code{course_id} takes precedence.

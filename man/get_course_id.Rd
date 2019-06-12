@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_course_id.R
 \name{get_course_id}
 \alias{get_course_id}
-\title{Extract a course ID from the SETC report file name.}
+\title{Extract a course ID from the SETC report filename.}
 \usage{
 get_course_id(report_name, term = NULL)
 }
@@ -18,20 +18,18 @@ A string (vector) giving the course ID that can be inferred
   from each \code{report_name}.
 }
 \description{
-\code{get_course_id} infers a valid \code{course_id} from the file
+\code{get_course_id} infers a valid course ID from the file
 name of a SETC report.
 }
 \details{
-A \code{course_id} takes the form (for example) "ECON105D1Fa18"
+A course ID takes the form (for example) "ECON105D1Fa18"
 where the components are the program code (ECON), course number
-(105), section number (D1) and term (Fa18).  SETC file names
-take on a standard format, (for example
+(105), section number (D1) and term (Fa18).
+
+SETC filenames take on a standard format, (for example
 "BrianKrauth -ECON105D100-Fall2018.pdf") from which the course
 ID (ECON105D1Fa18) and instructor ID (BrianKrauth) can be
 extracted.
-
-The file name format varies somewhat across terms,
-so it is a good idea to provide the \code{term} argument.
 }
 \examples{
 get_course_id("BrianKrauth -ECON105D100-Fall2018.pdf", term="Fa18")

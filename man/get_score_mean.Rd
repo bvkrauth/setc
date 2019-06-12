@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_score_mean.R
 \name{get_score_mean}
 \alias{get_score_mean}
-\title{Extract mean score from SETC report text}
+\title{Find and extract mean score from the text of an SETC report}
 \usage{
 get_score_mean(report_text, question)
 }
@@ -19,5 +19,5 @@ A numeric scalar, the mean response to
   the question given in \code{question}.
 }
 \description{
-Extract mean score from SETC report text
+Find and extract mean score from the text of an SETC report
 }

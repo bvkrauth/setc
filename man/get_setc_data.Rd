@@ -9,25 +9,28 @@ get_setc_data(report_folder = NULL, report_file = NULL,
   instructor_id = NULL, quietly = FALSE)
 }
 \arguments{
-\item{report_folder}{A string identifying the folder containing SETC report files.}
+\item{report_folder}{A string identifying the folder containing
+SETC report files.  Either \code{report_folder} or \code{report_file}
+must be provided.}
 
-\item{report_file}{A vector of strings listing the SETC report files.}
+\item{report_file}{A vector of strings listing the SETC report files.
+Either \code{report_folder} or \code{report_file} must be provided.}
 
 \item{question_file}{Optional string, the location of a file containing
-additional question information to be passed on to \code{\link{get_question_data}}}
+additional question information to be passed on to
+\code{\link{get_question_data}}}
 
 \item{instructor_file}{Optional string, the location of a file providing
-additional instructor information to be passed on to \code{\link{get_instructor_data}}.}
+additional instructor information to be passed on to
+\code{\link{get_instructor_data}}.}
 
-\item{course_id}{Optional vector of strings, same length as report_file. Normally
-the course_id can be recovered from the SETC file name, but this option allows
-the user to specify it directly (for example, in the case where the file names
-have been altered)}
+\item{course_id}{Optional vector of strings, the same length as \code{report_file}.
+Normally \code{course_id} can be recovered from the SETC filename, but this
+option allows the user to specify it directly.}
 
-\item{instructor_id}{Optional vector of strings, same length as report_file. Normally
-the instructor_id can be recovered from the SETC file name, but this option allows
-the user to specify it directly (for example, in the case where the file names
-have been altered)}
+\item{instructor_id}{Optional vector of strings, the same length as \code{report_file}.
+Normally \code{instructor_id} can be recovered from the SETC filename, but this
+option allows the user to specify it directly.}
 
 \item{quietly}{Optional logical. If FALSE (the default), some intermediate
 information will be printed to show progress.  IF TRUE, the information will
@@ -50,7 +53,8 @@ A list with two components:
 }
 \description{
 \code{get_setc_data} extracts course-level SETC results and
-comments from a set of PDF files containing SETC reports.
+comments from a set of PDF files containing course-level
+SETC reports.
 }
 \details{
 SETC reports are PDF files that give various information
@@ -84,6 +88,5 @@ get_setc_data("Sp17", "../SETC reports/1171 - Spring 2017")
 }
 }
 \seealso{
-\code{\link{get_instructor_data}}, \code{\link{get_question_data}},
-  \code{\link{pool_setc_data}}.
+\code{\link{get_instructor_data}}, \code{\link{get_question_data}}
 }

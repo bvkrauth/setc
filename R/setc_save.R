@@ -18,9 +18,9 @@
 #'
 #' @param as A string indicating the type of data.
 #'
-#' @param output_folder The folder into which the data should be saved
+#' @param output_folder A string indicating the folder into which the data should be saved
 #'
-#' @param save_rdata,save_csv Optional logical.  If
+#' @param save_rdata,save_csv An optional logical scalar.  If
 #'   \code{FALSE}, a file of the given format will not be
 #'   saved.
 #'

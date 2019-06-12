@@ -1,7 +1,7 @@
-#' Checks for a valid instructor ID
+#' Check whether input is a valid instructor ID
 #'
 #' \code{is_instructor_id} checks to see if its input
-#' is a valid instructor IDs.  Instructor IDs should
+#' is a valid instructor ID.  Instructor IDs should
 #' be alphabetic strings.
 #'
 #' @param instructor_id A vector of strings

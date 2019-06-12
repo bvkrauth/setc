@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_response_rate.R
 \name{get_response_rate}
 \alias{get_response_rate}
-\title{Finds response rate information in SETC report}
+\title{Find and extract response rate from the text of an SETC report}
 \usage{
 get_response_rate(report_text, row_name = "Responded")
 }

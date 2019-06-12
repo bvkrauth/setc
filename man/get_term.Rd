@@ -2,18 +2,22 @@
 % Please edit documentation in R/get_term.R
 \name{get_term}
 \alias{get_term}
-\title{Title}
+\title{Extract term  from the SETC report filename or term folder name}
 \usage{
 get_term(report_name = NULL, term_folder = NULL)
 }
 \arguments{
-\item{report_name, term_folder}{A vector of strings}
+\item{report_name, term_folder}{A string or vector
+of strings each of which identifies either the
+SETC report filename or the term folder.
+Either \code{report_name} or \code{term_folder}
+must be provided, but not both.}
 }
 \value{
-A string identifying a term, e.g. "Fa18"
+A string or vector of strings identifying the term, e.g. "Fa18"
 }
 \description{
-Title
+\code{get_term} extracts the term  from the SETC report filename or term folder name
 }
 \examples{
 get_term(term_folder = "1171 - Spring 2017")

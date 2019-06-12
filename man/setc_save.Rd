@@ -11,9 +11,9 @@ setc_save(dat, as, output_folder, save_rdata = TRUE, save_csv = TRUE)
 
 \item{as}{A string indicating the type of data.}
 
-\item{output_folder}{The folder into which the data should be saved}
+\item{output_folder}{A string indicating the folder into which the data should be saved}
 
-\item{save_rdata, save_csv}{Optional logical.  If
+\item{save_rdata, save_csv}{An optional logical scalar.  If
 \code{FALSE}, a file of the given format will not be
 saved.}
 }

@@ -1,4 +1,4 @@
-#' Finds response rate information in SETC report
+#' Find and extract response rate from the text of an SETC report
 #'
 #' \code{get_response_rate} finds SETC response rate information from
 #' the PDF text.

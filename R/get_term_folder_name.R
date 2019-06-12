@@ -1,8 +1,12 @@
-#' Extracts term folder name ("1171 - Spring 2017") from the term ("Sp17")
+#' Extract term folder name from the term
 #'
-#' @param term A string giving the term (e.g. "Sp17")
+#' \code{get_term_folder_name} extracts a term folder name
+#' (e.g., "1171 - Spring 2017") from the term (e.g., "Sp17")
 #'
-#' @return A string giving the associated term folder (e.g., "1171 - Spring 2017")
+#' @param term A string or vector of strings agiving the term (e.g. "Sp17")
+#'
+#' @return A string or vector of strings giving the associated term
+#'   folder (e.g., "1171 - Spring 2017")
 #'
 #' @export
 #'

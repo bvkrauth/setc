@@ -1,4 +1,6 @@
-#' Check whether input is a valid course_id
+#' Check whether input is a valid course ID
+#'
+#' \code{is_course_id} checks whether its input is a valid course ID.
 #'
 #' @param course_id A vector of strings
 #'

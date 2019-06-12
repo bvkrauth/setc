@@ -1,4 +1,4 @@
-#' Calculate SETC statistics from frequency distribution.
+#' Calculate SETC statistics from the frequency distribution.
 #'
 #' These functions calculate the number of respondents, mean
 #' response, median response, and standard deviation of responses
@@ -13,7 +13,6 @@
 #'
 #' @return A numeric vector corresponding to the requested
 #' statistic.
-#'
 #'
 #' @name setc_stats
 NULL

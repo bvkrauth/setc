@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_question_data.R
 \name{is_question_data}
 \alias{is_question_data}
-\title{Check for valid question data}
+\title{Check whether input is valid question data}
 \usage{
 is_question_data(dat)
 }

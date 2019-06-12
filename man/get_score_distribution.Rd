@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_score_distribution.R
 \name{get_score_distribution}
 \alias{get_score_distribution}
-\title{Find and extract score distribution from SETC report}
+\title{Find and extract score distribution from the text of an SETC report}
 \usage{
 get_score_distribution(report_text, question)
 }
@@ -19,5 +19,5 @@ A numeric vector of length 5 giving the distribution
   of responses.
 }
 \description{
-Find and extract score distribution from SETC report
+Find and extract score distribution from the text of an SETC report
 }

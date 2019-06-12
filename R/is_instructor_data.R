@@ -1,4 +1,4 @@
-#' Check for valid instructor data
+#' Check whether input is  valid instructor data
 #'
 #' \code{is_instructor_data} checks its input to see if it is
 #' a tibble (or data frame) in which each row contains a

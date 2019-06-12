@@ -1,7 +1,7 @@
 #' Extract an instructor ID from the SETC report filename.
 #'
-#' \code{get_instructor_id} infers a valid \code{instructor_id} from the file
-#' name of a SETC report.
+#' \code{get_instructor_id} extracts  a valid instructor ID from the
+#' SETC report filename.
 #'
 #' An \code{instructor_id} takes the form "FirstnameLastname"
 #' without spaces, periods, or special characters.

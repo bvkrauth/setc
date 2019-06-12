@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_instructor_id.R
 \name{is_instructor_id}
 \alias{is_instructor_id}
-\title{Checks for a valid instructor ID}
+\title{Check whether input is a valid instructor ID}
 \usage{
 is_instructor_id(instructor_id, strict = FALSE)
 }
@@ -18,7 +18,7 @@ A logical vector, each element of which is TRUE
 }
 \description{
 \code{is_instructor_id} checks to see if its input
-is a valid instructor IDs.  Instructor IDs should
+is a valid instructor ID.  Instructor IDs should
 be alphabetic strings.
 }
 \examples{

@@ -1,7 +1,8 @@
 #' Extract SETC data from a collection of SETC reports.
 #'
 #' \code{get_setc_data} extracts course-level SETC results and
-#' comments from a set of PDF files containing SETC reports.
+#' comments from a set of PDF files containing course-level
+#' SETC reports.
 #'
 #' SETC reports are PDF files that give various information
 #' about student responses to various questions, as well as
@@ -28,25 +29,28 @@
 #' comments, along with basic information on the course each
 #' comment is from.
 #'
-#' @param report_folder A string identifying the folder containing SETC report files.
+#' @param report_folder A string identifying the folder containing
+#'   SETC report files.  Either \code{report_folder} or \code{report_file}
+#'   must be provided.
 #'
 #' @param report_file A vector of strings listing the SETC report files.
+#' Either \code{report_folder} or \code{report_file} must be provided.
 #'
 #' @param instructor_file Optional string, the location of a file providing
-#'   additional instructor information to be passed on to \code{\link{get_instructor_data}}.
+#'   additional instructor information to be passed on to
+#'   \code{\link{get_instructor_data}}.
 #'
 #' @param question_file Optional string, the location of a file containing
-#'   additional question information to be passed on to \code{\link{get_question_data}}
+#'   additional question information to be passed on to
+#'   \code{\link{get_question_data}}
 #'
-#' @param course_id Optional vector of strings, same length as report_file. Normally
-#'   the course_id can be recovered from the SETC file name, but this option allows
-#'   the user to specify it directly (for example, in the case where the file names
-#'   have been altered)
+#' @param course_id Optional vector of strings, the same length as \code{report_file}.
+#'   Normally \code{course_id} can be recovered from the SETC filename, but this
+#'   option allows the user to specify it directly.
 #'
-#' @param instructor_id Optional vector of strings, same length as report_file. Normally
-#'   the instructor_id can be recovered from the SETC file name, but this option allows
-#'   the user to specify it directly (for example, in the case where the file names
-#'   have been altered)
+#' @param instructor_id Optional vector of strings, the same length as \code{report_file}.
+#'   Normally \code{instructor_id} can be recovered from the SETC filename, but this
+#'   option allows the user to specify it directly.
 #'
 #' @param quietly Optional logical. If FALSE (the default), some intermediate
 #'   information will be printed to show progress.  IF TRUE, the information will
@@ -68,8 +72,7 @@
 #'
 #' @export
 #'
-#' @seealso \code{\link{get_instructor_data}}, \code{\link{get_question_data}},
-#'   \code{\link{pool_setc_data}}.
+#' @seealso \code{\link{get_instructor_data}}, \code{\link{get_question_data}}
 #'
 #' @examples
 #' \dontrun{

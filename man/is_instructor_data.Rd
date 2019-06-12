@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_instructor_data.R
 \name{is_instructor_data}
 \alias{is_instructor_data}
-\title{Check for valid instructor data}
+\title{Check whether input is  valid instructor data}
 \usage{
 is_instructor_data(dat)
 }
