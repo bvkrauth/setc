@@ -9,15 +9,10 @@
 #' "BrianKrauth -ECON105D100-Fall2018.pdf") from which the course
 #' ID (ECON105D1Fa18) and instructor ID (BrianKrauth) can be
 #' extracted.
-#'
 #' The file name format varies somewhat across terms,
-#' so it is a good idea to provide the \code{term} argument.
 #'
 #' @param report_name A string (vector) giving the filename(s) for
 #' a SETC report
-#'
-#' @param term An optional string giving the term, e.g. "Fa16".  If
-#'   not provided, the term will be inferred from \code{report_name}.
 #'
 #' @return A string (vector) giving the instructor ID that can be inferred
 #'   from each \code{report_name}.
@@ -27,11 +22,9 @@
 #' @seealso \code{\link{is_instructor_id}}, \code{\link{get_course_id}}.
 #'
 #' @examples
-#' get_course_id("BrianKrauth -ECON105D100-Fall2018.pdf", term="Fa18")
-get_instructor_id <- function(report_name, term=NULL){
-  if (is.null(term)) {
-    term <- get_term(report_name = report_name)
-  }
+#' get_instructor_id("BrianKrauth -ECON105D100-Fall2018.pdf")
+get_instructor_id <- function(report_name){
+  term <- get_term(report_name = report_name)
   # The document name format was slightly different in Fall 2016
   # The document name follows a consistent format in all other terms
   # Clean up the report_name

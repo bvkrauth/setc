@@ -15,9 +15,6 @@
 #' @param report_name A string (vector) giving the filename(s) for
 #' a SETC report
 #'
-#' @param term An optional string giving the term, e.g. "Fa16".  If
-#'   not provided, the term will be inferred from \code{report_name}.
-#'
 #' @return A string (vector) giving the course ID that can be inferred
 #'   from each \code{report_name}.
 #'
@@ -28,11 +25,9 @@
 #' @export
 #'
 #' @examples
-#' get_course_id("BrianKrauth -ECON105D100-Fall2018.pdf", term="Fa18")
-get_course_id <- function(report_name, term = NULL){
-  if (is.null(term)) {
-    term <- get_term(report_name = report_name)
-  }
+#' get_course_id("BrianKrauth -ECON105D100-Fall2018.pdf")
+get_course_id <- function(report_name){
+  term <- get_term(report_name = report_name)
   clean_report_name <- report_name %>%
     stringr::str_replace_all("BUEC", "ECON") %>%
     stringr::str_replace_all("WD", "D")

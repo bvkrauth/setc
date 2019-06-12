@@ -97,7 +97,7 @@ get_setc_data <- function(report_folder = NULL,
   }
   report_name <- basename(report_file)
   if (is.null(course_id)){
-    course_id <- get_course_id(report_name)
+    course_id <- get_course_id(report_name = report_name)
   }
   if (is.null(instructor_id)){
     instructor_id <- get_instructor_id(report_name)

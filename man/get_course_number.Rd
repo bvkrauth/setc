@@ -4,14 +4,12 @@
 \alias{get_course_number}
 \title{Extract a course number from the course ID or SETC report filename}
 \usage{
-get_course_number(report_name = NULL, term = NULL,
-  course_id = get_course_id(report_name, term = term))
+get_course_number(report_name = NULL,
+  course_id = get_course_id(report_name))
 }
 \arguments{
 \item{report_name}{An optional string (vector) giving the
 file name of a SETC report}
-
-\item{term}{An optional string giving the term, e.g. "Fa16"}
 
 \item{course_id}{An optional vector of course IDs}
 }

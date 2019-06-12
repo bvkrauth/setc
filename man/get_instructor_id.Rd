@@ -4,14 +4,11 @@
 \alias{get_instructor_id}
 \title{Extract an instructor ID from the SETC report filename.}
 \usage{
-get_instructor_id(report_name, term = NULL)
+get_instructor_id(report_name)
 }
 \arguments{
 \item{report_name}{A string (vector) giving the filename(s) for
 a SETC report}
-
-\item{term}{An optional string giving the term, e.g. "Fa16".  If
-not provided, the term will be inferred from \code{report_name}.}
 }
 \value{
 A string (vector) giving the instructor ID that can be inferred
@@ -28,12 +25,10 @@ SETC file names take on a standard format, (for example
 "BrianKrauth -ECON105D100-Fall2018.pdf") from which the course
 ID (ECON105D1Fa18) and instructor ID (BrianKrauth) can be
 extracted.
-
 The file name format varies somewhat across terms,
-so it is a good idea to provide the \code{term} argument.
 }
 \examples{
-get_course_id("BrianKrauth -ECON105D100-Fall2018.pdf", term="Fa18")
+get_instructor_id("BrianKrauth -ECON105D100-Fall2018.pdf")
 }
 \seealso{
 \code{\link{is_instructor_id}}, \code{\link{get_course_id}}.
