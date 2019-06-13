@@ -1,6 +1,6 @@
 Package: setc
 Title: Tools for processing SFU course-level SETC reports
-Version: 0.9.0
+Version: 0.9.0.9000
 Authors@R: 
     person(given = "Brian",
            family = "Krauth",
