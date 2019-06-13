@@ -34,18 +34,22 @@
 #' \dontrun{
 #' pool_setc_data("course", "../data/")
 #' }
-pool_setc_data <- function(data_structure, data_folder){
-  file_names <- dir(data_folder,
-                    pattern = stringr::str_c("(Fa|Sp|Su)[0-9]{2}_",
-                                             data_structure,
-                                             ".csv"),
-                    full.names = TRUE)
+pool_setc_data <- function(data_structure,
+                           data_folder){
+  file_names <- dir(
+    data_folder,
+    pattern = stringr::str_c("(Fa|Sp|Su)[0-9]{2}_",
+                             data_structure,
+                             ".csv"),
+    full.names = TRUE)
   dat <- NULL
   if (length(file_names) > 0){
     for (i in 1:length(file_names)) {
       current_term <- readr::read_csv(file_names[i])
       dat <- rbind(dat, current_term)
     }
+  } else {
+    stop("No CSV ", data_structure, " files found in folder ", data_folder)
   }
   invisible(dat)
 }

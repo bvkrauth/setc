@@ -25,6 +25,10 @@
 #' get_instructor_id("BrianKrauth -ECON105D100-Fall2018.pdf")
 get_instructor_id <- function(report_name){
   term <- get_term(report_name = report_name)
+  if (any(is.na(term))){
+    stop("Unable to recover a valid instructor ID from filename ",
+         report_name)
+  }
   # The document name format was slightly different in Fall 2016
   # The document name follows a consistent format in all other terms
   # Clean up the report_name

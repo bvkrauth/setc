@@ -14,7 +14,8 @@
 #'
 #' @examples
 #' get_term(term_folder = "1171 - Spring 2017")
-get_term <- function(report_name = NULL, term_folder = NULL){
+get_term <- function(report_name = NULL,
+                     term_folder = NULL){
   term <- NULL
   if (!is.null(report_name)){
     season <- stringr::str_sub(stringr::str_extract(report_name,

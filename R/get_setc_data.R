@@ -92,8 +92,17 @@ get_setc_data <- function(report_folder = NULL,
   .data <- NULL
   # Indicate where course-level SETC reports are
   if (is.null(report_file)){
+    if (is.null(report_folder)){
+      stop("Either report_file or report_folder must be provided")
+    }
     report_file <- dir(path = report_folder,
                        pattern = "*.pdf", full.names = TRUE)
+    if (length(report_file) == 0) {
+      stop("No PDF files in ", report_folder)
+    }
+  }
+  if (!all(file.exists(report_file))) {
+    stop("File not found ", report_file)
   }
   report_name <- basename(report_file)
   if (is.null(course_id)){

@@ -8,8 +8,8 @@ test_that("Basic functionality", {
                26)
 })
 
-test_that("Fails cleanly", {
-  expect_equal(is.na(get_response_rate("IRRELEVANT TEXT",
-                                       row_name = "Responded")),
-                     TRUE)
+test_that("Returns NA if it can't be found", {
+  expect_true(
+    is.na(get_response_rate("IRRELEVANT TEXT",
+                            row_name = "Responded")))
 })

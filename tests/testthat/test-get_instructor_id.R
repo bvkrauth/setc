@@ -12,7 +12,9 @@ test_that("Basic functionality", {
 })
 
 test_that("Clean failure", {
-  expect_error(get_instructor_id(""))
+  expect_error(
+    get_instructor_id(""),
+    regexp = "Unable to recover a valid instructor ID")
 })
 
 

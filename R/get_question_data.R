@@ -48,6 +48,9 @@ get_question_data <- function(question_file = NULL){
   if (is.null(question_file)) {
     question_data <- get_fass_questions()
   } else {
+    if (!file.exists(question_file)){
+      stop("File does not exist: ", question_file)
+    }
     question_data <- readr::read_csv(question_file)
   }
   if (!is_question_data(question_data)){

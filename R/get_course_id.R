@@ -28,6 +28,10 @@
 #' get_course_id("BrianKrauth -ECON105D100-Fall2018.pdf")
 get_course_id <- function(report_name){
   term <- get_term(report_name = report_name)
+  if (any(is.na(term))){
+    stop("Unable to recover a valid course ID from filename ",
+         report_name)
+  }
   clean_report_name <- report_name %>%
     stringr::str_replace_all("BUEC", "ECON") %>%
     stringr::str_replace_all("WD", "D")

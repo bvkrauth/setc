@@ -21,7 +21,7 @@
 get_course_number <- function(report_name = NULL,
                               course_id = get_course_id(report_name)){
   if (!all(is_course_id(course_id))) {
-    stop("invalid course id: ", course_id)
+    stop("Invalid course ID: ", course_id)
   }
   course_number <- course_id %>%
     stringr::str_sub(-9, -7) %>% # Extract 000 from ECON000D1Fa16

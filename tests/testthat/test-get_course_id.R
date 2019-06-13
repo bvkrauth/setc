@@ -17,7 +17,9 @@ test_that("Handles BUEC and W courses correctly", {
 })
 
 test_that("Clean failure", {
-  expect_error(get_course_id("[NON-SPECIFIC TEXT HERE]"))
+  expect_error(
+    get_course_id("[NON-SPECIFIC TEXT HERE]"),
+    regexp = "Unable to recover a valid course ID")
 })
 
 context("get_course_id (Fa16 term)")

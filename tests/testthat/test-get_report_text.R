@@ -7,5 +7,9 @@ test_that("Basic functionality", {
 })
 
 test_that("Fails cleanly", {
-  expect_error(get_report_text("nonexistent_file.pdf"))
+  expect_error(
+    get_report_text("nonexistent_file.pdf"),
+    regexp = "File does not exist")
+  expect_error(
+    get_report_text("../data/econ_question_list.csv"))
 })
